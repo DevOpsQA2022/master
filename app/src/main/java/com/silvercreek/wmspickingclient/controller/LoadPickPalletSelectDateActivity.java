@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.icu.util.Calendar;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -101,11 +102,22 @@ public class LoadPickPalletSelectDateActivity extends AppBaseActivity {
         Globals.gAppName=APPLICATION_NAME;
         Globals.gTimeout=sharedpreferences.getString("Timeout", "");
 
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            calendar = Calendar.getInstance();
+        }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        String currentDate = simpleDateFormat.format(calendar.getTime());
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        String NextDate = simpleDateFormat.format(calendar.getTime());
+        String currentDate = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            currentDate = simpleDateFormat.format(calendar.getTime());
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+        }
+        String NextDate = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            NextDate = simpleDateFormat.format(calendar.getTime());
+        }
         arrayList.add(currentDate);
         arrayList.add(NextDate);
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList){
