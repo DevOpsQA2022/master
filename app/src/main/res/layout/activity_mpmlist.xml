@@ -39,11 +39,10 @@
         android:background="#4f81bd"
         android:orientation="horizontal"
         android:padding="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
+       <!-- app:layout_constraintBottom_toTopOf="@+id/button"-->
 
         <TextView
             android:id="@+id/tvMMQty"
