@@ -145,7 +145,7 @@ public class PickTaskStagingSlot extends AppCompatActivity {
                     mToastMessage.showToast(PickTaskStagingSlot.this,
                             "Invalid Entry");
                 } else {
-                    Calendar calendar = Calendar.getInstance();
+                    Date calendar = Calendar.getInstance().getTime();
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String currentDate = simpleDateFormat.format(calendar.getTime());
                     Globals.gStgslot = stgSlot;
