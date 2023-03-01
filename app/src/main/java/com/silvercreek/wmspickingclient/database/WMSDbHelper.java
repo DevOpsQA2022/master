@@ -1456,12 +1456,12 @@ public class WMSDbHelper{
     {
         try
         {
-           // mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_HEADER);
-           // mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_DETAIL);
+            // mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_HEADER);
+            // mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_DETAIL);
             mSqlitedb.execSQL("DELETE FROM " + EXPORT_LOT_TABLE);
             mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_WHIPTL);
             mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_WHMSLT);
-           //mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_WHMLOT);
+            //mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_WHMLOT);
             //mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_WHMQTY);
             mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_WHITRLS);
             mSqlitedb.execSQL("DELETE FROM " + PICK_TASK_PRINTLABEL);
@@ -1611,18 +1611,18 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 config = new configsettings();
 
-                config.setID(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_ID)));
-                config.setAppName(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_APP_NAME)));
-                config.setAppDesc(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_APP_DESC)));
-                config.setInstallationDate(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_INSTALLATION_DATE)));
-                config.setExpDate(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_EXP_DATE)));
-                config.setNoOfDays(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_NUMBER_OF_DAYS)));
-                config.setDeviceId(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_DEVICE_ID)));
-                config.setUsername(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_USERNAME)));
-                config.setPassword(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_PASSWORD)));
-                config.setAdminPassword(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_ADMIN_PASSWORD)));
-                config.setSessionId(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_SESSIONID)));
-                config.setCurrentCompany(mCursor.getString(mCursor.getColumnIndex(CONFIG_SETTINGS_CURRENT_COMPANY)));
+                config.setID(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_ID)));
+                config.setAppName(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_APP_NAME)));
+                config.setAppDesc(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_APP_DESC)));
+                config.setInstallationDate(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_INSTALLATION_DATE)));
+                config.setExpDate(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_EXP_DATE)));
+                config.setNoOfDays(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_NUMBER_OF_DAYS)));
+                config.setDeviceId(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_DEVICE_ID)));
+                config.setUsername(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_USERNAME)));
+                config.setPassword(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_PASSWORD)));
+                config.setAdminPassword(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_ADMIN_PASSWORD)));
+                config.setSessionId(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_SESSIONID)));
+                config.setCurrentCompany(mCursor.getString(mCursor.getColumnIndexOrThrow(CONFIG_SETTINGS_CURRENT_COMPANY)));
             }
         }
         catch (Exception e)
@@ -2988,7 +2988,7 @@ public class WMSDbHelper{
 
         int Count = 0;
 
-       // mCursor = mSqlitedb.rawQuery("select max(CAST(tranlineNo AS INTEGER)) as tranlineNo from repackIngredient where tranlineNo < 0 ", null);
+        // mCursor = mSqlitedb.rawQuery("select max(CAST(tranlineNo AS INTEGER)) as tranlineNo from repackIngredient where tranlineNo < 0 ", null);
         mCursor = mSqlitedb.rawQuery("select max(tranlineNo) from repackIngredient where tranlineNo < 0 ", null);
 
 
@@ -3047,7 +3047,7 @@ public class WMSDbHelper{
     public void addRepackIngredients(RepackIngredients repackIngredients) {
 
         try {
-           // mSqlitedb.execSQL("DELETE FROM " + REPACK_INGREDIENT_TABLE);
+            // mSqlitedb.execSQL("DELETE FROM " + REPACK_INGREDIENT_TABLE);
             ContentValues cv = new ContentValues();
 
             cv.put(RIT_PANO, repackIngredients.getRIT_PANO());
@@ -3861,7 +3861,7 @@ public class WMSDbHelper{
 
         String mmtQty = "";
 
-       // mCursor = mSqlitedb.rawQuery("select wlotno from picktaskWHMLOT where wlotno='" + wLotno.trim() + "'", null);
+        // mCursor = mSqlitedb.rawQuery("select wlotno from picktaskWHMLOT where wlotno='" + wLotno.trim() + "'", null);
         mCursor = mSqlitedb.rawQuery("select wlotno from picktaskWHMLOT where lotrefid='" + wLotno.trim() + "'", null);
 
         try {
@@ -4029,7 +4029,7 @@ public class WMSDbHelper{
 
         int count = 0;
 
-       // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where Flag = 'Y' AND taskNum = '" + taskNum + "' " , null);
+        // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where Flag = 'Y' AND taskNum = '" + taskNum + "' " , null);
         mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where taskNum = '" + taskNum + "' " , null);
         count = mCursor.getCount();
         mCursor.close();
@@ -4050,10 +4050,10 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tMovetasklist = new Movetasklist();
 
-                tMovetasklist.setTaskNo(mCursor.getString(mCursor.getColumnIndex(MT_TASK_NO)));
-                tMovetasklist.setStatus(mCursor.getString(mCursor.getColumnIndex(MT_STATUS)));
-                tMovetasklist.setTaskType(mCursor.getString(mCursor.getColumnIndex(MT_TASK_TYPE)));
-                tMovetasklist.setRowPrty(mCursor.getString(mCursor.getColumnIndex(MT_ROWPRTY)));
+                tMovetasklist.setTaskNo(mCursor.getString(mCursor.getColumnIndexOrThrow(MT_TASK_NO)));
+                tMovetasklist.setStatus(mCursor.getString(mCursor.getColumnIndexOrThrow(MT_STATUS)));
+                tMovetasklist.setTaskType(mCursor.getString(mCursor.getColumnIndexOrThrow(MT_TASK_TYPE)));
+                tMovetasklist.setRowPrty(mCursor.getString(mCursor.getColumnIndexOrThrow(MT_ROWPRTY)));
 
 
                 movetaskList.add(tMovetasklist);
@@ -4078,11 +4078,11 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetasklist = new receivetasklist();
 
-                treceivetasklist.setTaskNo(mCursor.getString(mCursor.getColumnIndex(RT_TASKNO)));
-                treceivetasklist.setStatus(mCursor.getString(mCursor.getColumnIndex(RT_STATUS)));
-                treceivetasklist.setUserid(mCursor.getString(mCursor.getColumnIndex(RT_USERID)));
-                treceivetasklist.setDoctype(mCursor.getString(mCursor.getColumnIndex(RT_DOCTYPE)));
-                treceivetasklist.setDocno(mCursor.getString(mCursor.getColumnIndex(RT_DOCNO)));
+                treceivetasklist.setTaskNo(mCursor.getString(mCursor.getColumnIndexOrThrow(RT_TASKNO)));
+                treceivetasklist.setStatus(mCursor.getString(mCursor.getColumnIndexOrThrow(RT_STATUS)));
+                treceivetasklist.setUserid(mCursor.getString(mCursor.getColumnIndexOrThrow(RT_USERID)));
+                treceivetasklist.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(RT_DOCTYPE)));
+                treceivetasklist.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(RT_DOCNO)));
 
                 receiveList.add(treceivetasklist);
             }
@@ -4102,7 +4102,7 @@ public class WMSDbHelper{
         picktasklist tpicktasklist = null;
 
         mCursor = mSqlitedb.rawQuery("select * from picktasklist ORDER by taskno DESC", null);
-      //  mCursor = mSqlitedb.rawQuery("select * from picktasklist", null);
+        //  mCursor = mSqlitedb.rawQuery("select * from picktasklist", null);
         try {
             while (mCursor.moveToNext()) {
                 tpicktasklist = new picktasklist();
@@ -4111,10 +4111,10 @@ public class WMSDbHelper{
                 tpicktasklist.setRoute(mCursor.getString(2));
                 tpicktasklist.setStop(mCursor.getString(3));*/
                 //picktaskdetail.setWLotNo(mCursor.getString(4));
-                tpicktasklist.setTaskNo(mCursor.getString(mCursor.getColumnIndex(TASK_NO)));
-                tpicktasklist.setRoute(mCursor.getString(mCursor.getColumnIndex(ROUTE)));
-                tpicktasklist.setStop(mCursor.getString(mCursor.getColumnIndex(STOP)));
-                tpicktasklist.setStatus(mCursor.getString(mCursor.getColumnIndex(STATUS)));
+                tpicktasklist.setTaskNo(mCursor.getString(mCursor.getColumnIndexOrThrow(TASK_NO)));
+                tpicktasklist.setRoute(mCursor.getString(mCursor.getColumnIndexOrThrow(ROUTE)));
+                tpicktasklist.setStop(mCursor.getString(mCursor.getColumnIndexOrThrow(STOP)));
+                tpicktasklist.setStatus(mCursor.getString(mCursor.getColumnIndexOrThrow(STATUS)));
 
                 pickList.add(tpicktasklist);
             }
@@ -4157,8 +4157,8 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tphysicalcountlist = new physicalcountSlot();
 
-                tphysicalcountlist.setslot(mCursor.getString(mCursor.getColumnIndex(PHYSCIAL_COUNT_SLOT)));
-                tphysicalcountlist.setstatus(mCursor.getString(mCursor.getColumnIndex(PHYSCIAL_COUNT_STATUS)));
+                tphysicalcountlist.setslot(mCursor.getString(mCursor.getColumnIndexOrThrow(PHYSCIAL_COUNT_SLOT)));
+                tphysicalcountlist.setstatus(mCursor.getString(mCursor.getColumnIndexOrThrow(PHYSCIAL_COUNT_STATUS)));
 
                 physicalCountList.add(tphysicalcountlist);
             }
@@ -4319,38 +4319,38 @@ public class WMSDbHelper{
         ArrayList<physicalcountDetail> physicalcountDetailList = new ArrayList<>();
         physicalcountDetail tphysicalcountDetaillist = null;
 
-            mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where Flag = 'Y'" , null);
+        mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where Flag = 'Y'" , null);
         try {
             while (mCursor.moveToNext()) {
                 tphysicalcountDetaillist = new physicalcountDetail();
 
-                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SLOT)));
-                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTID)));
-                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PAGE)));
-                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO)));
-                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOCTID)));
-                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEM)));
-                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WLOTNO)));
-                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_UMEASUR)));
-                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TCOUNTQTY)));
-                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WMSSTAT)));
-                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_POSTED)));
-                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITMDESC)));
-                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PCKDESC)));
-                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DECNUM)));
-                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOTREFID)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEMSHOW)));
-                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SURPRISADD)));
-                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_USERID)));
-                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTED)));
-                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COLLECTION)));
-                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WELEMENT)));
-                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WIDGETID)));
-                //tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ROWNO)));
+                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SLOT)));
+                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTID)));
+                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PAGE)));
+                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO)));
+                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOCTID)));
+                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEM)));
+                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WLOTNO)));
+                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_UMEASUR)));
+                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TCOUNTQTY)));
+                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WMSSTAT)));
+                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_POSTED)));
+                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITMDESC)));
+                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PCKDESC)));
+                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DECNUM)));
+                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOTREFID)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEMSHOW)));
+                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SURPRISADD)));
+                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_USERID)));
+                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTED)));
+                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COLLECTION)));
+                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WELEMENT)));
+                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WIDGETID)));
+                //tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ROWNO)));
                 tphysicalcountDetaillist.setRowNo(String.valueOf(Globals.gPCDetailRowCount));
-                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_FLAG)));
-                String doclineNum =mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO));
+                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_FLAG)));
+                String doclineNum =mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO));
                 physicalcountDetailList.add(tphysicalcountDetaillist);
 
                 ContentValues cv = new ContentValues();
@@ -4373,8 +4373,8 @@ public class WMSDbHelper{
         ArrayList<physicalcountDetail> physicalcountDetailList = new ArrayList<>();
         physicalcountDetail tphysicalcountDetaillist = null;
         if(!Globals.FROMHIDE) {
-        mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where slot = '" + Globals.gPCSlot + "'" +
-                " and userid = '"+ Globals.gUsercode +"'", null);
+            mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where slot = '" + Globals.gPCSlot + "'" +
+                    " and userid = '"+ Globals.gUsercode +"'", null);
 
         /*mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where slot = '" + Globals.gPCSlot + "'" +
                 " and userid = '"+ Globals.gUsercode +"' ORDER BY CAST(UpdatedNo AS Integer) DESC", null);*/
@@ -4387,33 +4387,33 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tphysicalcountDetaillist = new physicalcountDetail();
 
-                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SLOT)));
-                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTID)));
-                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PAGE)));
-                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO)));
-                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOCTID)));
-                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEM)));
-                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WLOTNO)));
-                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_UMEASUR)));
-                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TCOUNTQTY)));
-                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WMSSTAT)));
-                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_POSTED)));
-                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITMDESC)));
-                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PCKDESC)));
-                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DECNUM)));
-                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOTREFID)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEMSHOW)));
-                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SURPRISADD)));
-                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_USERID)));
-                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTED)));
-                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COLLECTION)));
-                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WELEMENT)));
-                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WIDGETID)));
-                //tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ROWNO)));
+                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SLOT)));
+                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTID)));
+                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PAGE)));
+                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO)));
+                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOCTID)));
+                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEM)));
+                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WLOTNO)));
+                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_UMEASUR)));
+                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TCOUNTQTY)));
+                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WMSSTAT)));
+                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_POSTED)));
+                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITMDESC)));
+                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PCKDESC)));
+                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DECNUM)));
+                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOTREFID)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEMSHOW)));
+                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SURPRISADD)));
+                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_USERID)));
+                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTED)));
+                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COLLECTION)));
+                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WELEMENT)));
+                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WIDGETID)));
+                //tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ROWNO)));
                 tphysicalcountDetaillist.setRowNo(String.valueOf(Globals.gPCDetailRowCount));
-                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_FLAG)));
-                String doclineNum =mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO));
+                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_FLAG)));
+                String doclineNum =mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO));
                 physicalcountDetailList.add(tphysicalcountDetaillist);
 
                 ContentValues cv = new ContentValues();
@@ -4436,40 +4436,40 @@ public class WMSDbHelper{
         ArrayList<physicalcountDetail> physicalcountDetailList = new ArrayList<>();
         physicalcountDetail tphysicalcountDetaillist = null;
 
-            mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where slot = '" + Globals.gPCSlot + "'" +
-                    " and userid = '"+ Globals.gUsercode +"'", null);
+        mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where slot = '" + Globals.gPCSlot + "'" +
+                " and userid = '"+ Globals.gUsercode +"'", null);
 
         try {
             while (mCursor.moveToNext()) {
                 tphysicalcountDetaillist = new physicalcountDetail();
 
-                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SLOT)));
-                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTID)));
-                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PAGE)));
-                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO)));
-                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOCTID)));
-                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEM)));
-                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WLOTNO)));
-                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_UMEASUR)));
-                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TCOUNTQTY)));
-                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WMSSTAT)));
-                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_POSTED)));
-                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITMDESC)));
-                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PCKDESC)));
-                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DECNUM)));
-                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOTREFID)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEMSHOW)));
-                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SURPRISADD)));
-                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_USERID)));
-                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTED)));
-                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COLLECTION)));
-                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WELEMENT)));
-                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WIDGETID)));
-                //tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ROWNO)));
+                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SLOT)));
+                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTID)));
+                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PAGE)));
+                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO)));
+                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOCTID)));
+                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEM)));
+                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WLOTNO)));
+                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_UMEASUR)));
+                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TCOUNTQTY)));
+                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WMSSTAT)));
+                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_POSTED)));
+                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITMDESC)));
+                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PCKDESC)));
+                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DECNUM)));
+                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOTREFID)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEMSHOW)));
+                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SURPRISADD)));
+                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_USERID)));
+                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTED)));
+                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COLLECTION)));
+                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WELEMENT)));
+                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WIDGETID)));
+                //tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ROWNO)));
                 tphysicalcountDetaillist.setRowNo(String.valueOf(Globals.gPCDetailRowCount));
-                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_FLAG)));
-                String doclineNum =mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO));
+                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_FLAG)));
+                String doclineNum =mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO));
                 physicalcountDetailList.add(tphysicalcountDetaillist);
 
                 ContentValues cv = new ContentValues();
@@ -4503,32 +4503,32 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tphysicalcountDetaillist = new physicalcountDetail();
 
-                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SLOT)));
-                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTID)));
-                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PAGE)));
-                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO)));
-                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOCTID)));
-                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEM)));
-                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WLOTNO)));
-                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_UMEASUR)));
-                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TCOUNTQTY)));
-                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WMSSTAT)));
-                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_POSTED)));
-                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITMDESC)));
-                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PCKDESC)));
-                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DECNUM)));
-                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOTREFID)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEMSHOW)));
-                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SURPRISADD)));
-                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_USERID)));
-                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTED)));
-                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COLLECTION)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WELEMENT)));
-                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WIDGETID)));
-                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_FLAG)));
-                tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ROWNO)));
+                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SLOT)));
+                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTID)));
+                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PAGE)));
+                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO)));
+                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOCTID)));
+                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEM)));
+                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WLOTNO)));
+                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_UMEASUR)));
+                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TCOUNTQTY)));
+                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WMSSTAT)));
+                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_POSTED)));
+                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITMDESC)));
+                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PCKDESC)));
+                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DECNUM)));
+                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOTREFID)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEMSHOW)));
+                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SURPRISADD)));
+                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_USERID)));
+                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTED)));
+                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COLLECTION)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WELEMENT)));
+                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WIDGETID)));
+                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_FLAG)));
+                tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ROWNO)));
 
                 physicalcountDetailList.add(tphysicalcountDetaillist);
             }
@@ -4553,32 +4553,32 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tphysicalcountDetaillist = new physicalcountDetail();
 
-                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SLOT)));
-                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTID)));
-                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PAGE)));
-                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO)));
-                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOCTID)));
-                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEM)));
-                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WLOTNO)));
-                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_UMEASUR)));
-                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TCOUNTQTY)));
-                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WMSSTAT)));
-                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_POSTED)));
-                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITMDESC)));
-                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PCKDESC)));
-                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DECNUM)));
-                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOTREFID)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEMSHOW)));
-                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SURPRISADD)));
-                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_USERID)));
-                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTED)));
-                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COLLECTION)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WELEMENT)));
-                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WIDGETID)));
-                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_FLAG)));
-                tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ROWNO)));
+                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SLOT)));
+                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTID)));
+                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PAGE)));
+                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO)));
+                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOCTID)));
+                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEM)));
+                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WLOTNO)));
+                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_UMEASUR)));
+                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TCOUNTQTY)));
+                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WMSSTAT)));
+                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_POSTED)));
+                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITMDESC)));
+                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PCKDESC)));
+                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DECNUM)));
+                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOTREFID)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEMSHOW)));
+                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SURPRISADD)));
+                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_USERID)));
+                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTED)));
+                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COLLECTION)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WELEMENT)));
+                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WIDGETID)));
+                tphysicalcountDetaillist.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_FLAG)));
+                tphysicalcountDetaillist.setRowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ROWNO)));
 
                 physicalcountDetailList.add(tphysicalcountDetaillist);
             }
@@ -4602,11 +4602,11 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tphysicalcountICITEMlist = new physicalcountICITEM();
 
-                tphysicalcountICITEMlist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_ICITEM_ITEM)));
-                tphysicalcountICITEMlist.setinvtype(mCursor.getString(mCursor.getColumnIndex(PC_ICITEM_INVTYPE)));
-                tphysicalcountICITEMlist.setitmdesc(mCursor.getString(mCursor.getColumnIndex(PC_ICITEM_ITMDESC)));
-                tphysicalcountICITEMlist.setdecnum(mCursor.getString(mCursor.getColumnIndex(PC_ICITEM_DECNUM)));
-                tphysicalcountICITEMlist.setitemShow(mCursor.getString(mCursor.getColumnIndex(PC_ICITEM_ITEMSHOW)));
+                tphysicalcountICITEMlist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_ICITEM_ITEM)));
+                tphysicalcountICITEMlist.setinvtype(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_ICITEM_INVTYPE)));
+                tphysicalcountICITEMlist.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_ICITEM_ITMDESC)));
+                tphysicalcountICITEMlist.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_ICITEM_DECNUM)));
+                tphysicalcountICITEMlist.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_ICITEM_ITEMSHOW)));
 
                 physicalcountICITEMList.add(tphysicalcountICITEMlist);
             }
@@ -4630,8 +4630,8 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tphysicalcountWHMLOTlist = new physicalcountWHMLOT();
 
-                tphysicalcountWHMLOTlist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_WHMLOT_ITEM)));
-                tphysicalcountWHMLOTlist.setlotrefid(mCursor.getString(mCursor.getColumnIndex(PC_WHMLOT_LOTREFID)));
+                tphysicalcountWHMLOTlist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_WHMLOT_ITEM)));
+                tphysicalcountWHMLOTlist.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_WHMLOT_LOTREFID)));
 
                 physicalcountWHMLOTList.add(tphysicalcountWHMLOTlist);
             }
@@ -4656,31 +4656,31 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tphysicalcountDetaillist = new physicalcountDetail();
 
-                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SLOT)));
-                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTID)));
-                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PAGE)));
-                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DOCLINENO)));
-                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOCTID)));
-                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEM)));
-                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WLOTNO)));
-                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_UMEASUR)));
-                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TCOUNTQTY)));
-                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WMSSTAT)));
-                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_POSTED)));
-                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITMDESC)));
-                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_PCKDESC)));
-                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_DECNUM)));
-                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_LOTREFID)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_ITEMSHOW)));
-                tphysicalcountDetaillist.setinvtype(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_INVTYPE)));
-                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_SURPRISADD)));
-                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_USERID)));
-                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COUNTED)));
-                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_COLLECTION)));
-                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_TQTY)));
-                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WELEMENT)));
-                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndex(PC_DETAIL_WIDGETID)));
+                tphysicalcountDetaillist.setslot(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SLOT)));
+                tphysicalcountDetaillist.setcountid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTID)));
+                tphysicalcountDetaillist.setpage(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PAGE)));
+                tphysicalcountDetaillist.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DOCLINENO)));
+                tphysicalcountDetaillist.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOCTID)));
+                tphysicalcountDetaillist.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEM)));
+                tphysicalcountDetaillist.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WLOTNO)));
+                tphysicalcountDetaillist.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_UMEASUR)));
+                tphysicalcountDetaillist.settcountqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TCOUNTQTY)));
+                tphysicalcountDetaillist.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WMSSTAT)));
+                tphysicalcountDetaillist.setposted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_POSTED)));
+                tphysicalcountDetaillist.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITMDESC)));
+                tphysicalcountDetaillist.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_PCKDESC)));
+                tphysicalcountDetaillist.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_DECNUM)));
+                tphysicalcountDetaillist.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_LOTREFID)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_ITEMSHOW)));
+                tphysicalcountDetaillist.setinvtype(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_INVTYPE)));
+                tphysicalcountDetaillist.setsurprisadd(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_SURPRISADD)));
+                tphysicalcountDetaillist.setuserid(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_USERID)));
+                tphysicalcountDetaillist.setcounted(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COUNTED)));
+                tphysicalcountDetaillist.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_COLLECTION)));
+                tphysicalcountDetaillist.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_TQTY)));
+                tphysicalcountDetaillist.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WELEMENT)));
+                tphysicalcountDetaillist.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(PC_DETAIL_WIDGETID)));
 
                 physicalcountDetailList.add(tphysicalcountDetaillist);
             }
@@ -4705,16 +4705,16 @@ public class WMSDbHelper{
                 tpicktaskPrintlabel = new picktaskPrintlabel();
 
                 tpicktaskPrintlabel.setStop(Globals.gStop);
-                tpicktaskPrintlabel.setTrailer(mCursor.getString(mCursor.getColumnIndex(PT_TRAILER)));
+                tpicktaskPrintlabel.setTrailer(mCursor.getString(mCursor.getColumnIndexOrThrow(PT_TRAILER)));
                 tpicktaskPrintlabel.setRoute(Globals.gRoute);
-                tpicktaskPrintlabel.setDock(mCursor.getString(mCursor.getColumnIndex(PT_DOCK)));
-                tpicktaskPrintlabel.setDeldate(mCursor.getString(mCursor.getColumnIndex(PT_DELDATE)));
-                tpicktaskPrintlabel.setOrderno(mCursor.getString(mCursor.getColumnIndex(PT_ORDER)));
+                tpicktaskPrintlabel.setDock(mCursor.getString(mCursor.getColumnIndexOrThrow(PT_DOCK)));
+                tpicktaskPrintlabel.setDeldate(mCursor.getString(mCursor.getColumnIndexOrThrow(PT_DELDATE)));
+                tpicktaskPrintlabel.setOrderno(mCursor.getString(mCursor.getColumnIndexOrThrow(PT_ORDER)));
                 tpicktaskPrintlabel.setTaskno(Globals.gTaskNo);
-                tpicktaskPrintlabel.setCustid(mCursor.getString(mCursor.getColumnIndex(PT_CUSTID)));
-                tpicktaskPrintlabel.setCustname(mCursor.getString(mCursor.getColumnIndex(PT_CUSTNAME)));
+                tpicktaskPrintlabel.setCustid(mCursor.getString(mCursor.getColumnIndexOrThrow(PT_CUSTID)));
+                tpicktaskPrintlabel.setCustname(mCursor.getString(mCursor.getColumnIndexOrThrow(PT_CUSTNAME)));
                 tpicktaskPrintlabel.setPicker(Globals.gUsercode);
-                tpicktaskPrintlabel.setPalno(mCursor.getString(mCursor.getColumnIndex(PT_PALNO)));
+                tpicktaskPrintlabel.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(PT_PALNO)));
 
                 picktaskPrintlabel.add(tpicktaskPrintlabel);
             }
@@ -4739,20 +4739,20 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskprintdetail = new receivetaskprintdetail();
 
-                treceivetaskprintdetail.setwlotno(mCursor.getString(mCursor.getColumnIndex(RTP_WLOTNO)));
-                treceivetaskprintdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndex(RTP_LOTREFID)));
-                treceivetaskprintdetail.setitem(mCursor.getString(mCursor.getColumnIndex(RTP_ITEM)));
-                treceivetaskprintdetail.setrecdate(mCursor.getString(mCursor.getColumnIndex(RTP_RECDATE)));
-                treceivetaskprintdetail.setexpdate(mCursor.getString(mCursor.getColumnIndex(RTP_EXPDATE)));
-                treceivetaskprintdetail.setrecuser(mCursor.getString(mCursor.getColumnIndex(RTP_RECUSER)));
-                treceivetaskprintdetail.settaskno(mCursor.getString(mCursor.getColumnIndex(RTP_TASKNO)));
-                treceivetaskprintdetail.settasklineno(mCursor.getString(mCursor.getColumnIndex(RTP_TASKLINENO)));
-                treceivetaskprintdetail.setpltlineno(mCursor.getString(mCursor.getColumnIndex(RTP_PLTLINENO)));
-                treceivetaskprintdetail.setprtplttag(mCursor.getString(mCursor.getColumnIndex(RTP_PRTPLTTAG)));
-                treceivetaskprintdetail.settqty(mCursor.getString(mCursor.getColumnIndex(RTP_TQTY)));
-                treceivetaskprintdetail.settrkqty(mCursor.getString(mCursor.getColumnIndex(RTP_TRKQTY)));
-                treceivetaskprintdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndex(RTP_ITMDESC)));
-                treceivetaskprintdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndex(RTP_CATCHWT)));
+                treceivetaskprintdetail.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_WLOTNO)));
+                treceivetaskprintdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_LOTREFID)));
+                treceivetaskprintdetail.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_ITEM)));
+                treceivetaskprintdetail.setrecdate(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_RECDATE)));
+                treceivetaskprintdetail.setexpdate(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_EXPDATE)));
+                treceivetaskprintdetail.setrecuser(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_RECUSER)));
+                treceivetaskprintdetail.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TASKNO)));
+                treceivetaskprintdetail.settasklineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TASKLINENO)));
+                treceivetaskprintdetail.setpltlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_PLTLINENO)));
+                treceivetaskprintdetail.setprtplttag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_PRTPLTTAG)));
+                treceivetaskprintdetail.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TQTY)));
+                treceivetaskprintdetail.settrkqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TRKQTY)));
+                treceivetaskprintdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_ITMDESC)));
+                treceivetaskprintdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_CATCHWT)));
 
                 receivetaskprintlabel.add(treceivetaskprintdetail);
             }
@@ -4775,20 +4775,20 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskprintdetail = new receivetaskprintdetail();
 
-                treceivetaskprintdetail.setwlotno(mCursor.getString(mCursor.getColumnIndex(RTP_WLOTNO)));
-                treceivetaskprintdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndex(RTP_LOTREFID)));
-                treceivetaskprintdetail.setitem(mCursor.getString(mCursor.getColumnIndex(RTP_ITEM)));
-                treceivetaskprintdetail.setrecdate(mCursor.getString(mCursor.getColumnIndex(RTP_RECDATE)));
-                treceivetaskprintdetail.setexpdate(mCursor.getString(mCursor.getColumnIndex(RTP_EXPDATE)));
-                treceivetaskprintdetail.setrecuser(mCursor.getString(mCursor.getColumnIndex(RTP_RECUSER)));
-                treceivetaskprintdetail.settaskno(mCursor.getString(mCursor.getColumnIndex(RTP_TASKNO)));
-                treceivetaskprintdetail.settasklineno(mCursor.getString(mCursor.getColumnIndex(RTP_TASKLINENO)));
-                treceivetaskprintdetail.setpltlineno(mCursor.getString(mCursor.getColumnIndex(RTP_PLTLINENO)));
-                treceivetaskprintdetail.setprtplttag(mCursor.getString(mCursor.getColumnIndex(RTP_PRTPLTTAG)));
-                treceivetaskprintdetail.settqty(mCursor.getString(mCursor.getColumnIndex(RTP_TQTY)));
-                treceivetaskprintdetail.settrkqty(mCursor.getString(mCursor.getColumnIndex(RTP_TRKQTY)));
-                treceivetaskprintdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndex(RTP_ITMDESC)));
-                treceivetaskprintdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndex(RTP_CATCHWT)));
+                treceivetaskprintdetail.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_WLOTNO)));
+                treceivetaskprintdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_LOTREFID)));
+                treceivetaskprintdetail.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_ITEM)));
+                treceivetaskprintdetail.setrecdate(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_RECDATE)));
+                treceivetaskprintdetail.setexpdate(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_EXPDATE)));
+                treceivetaskprintdetail.setrecuser(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_RECUSER)));
+                treceivetaskprintdetail.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TASKNO)));
+                treceivetaskprintdetail.settasklineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TASKLINENO)));
+                treceivetaskprintdetail.setpltlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_PLTLINENO)));
+                treceivetaskprintdetail.setprtplttag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_PRTPLTTAG)));
+                treceivetaskprintdetail.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TQTY)));
+                treceivetaskprintdetail.settrkqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_TRKQTY)));
+                treceivetaskprintdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_ITMDESC)));
+                treceivetaskprintdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(RTP_CATCHWT)));
 
                 receivetaskprintlabel.add(treceivetaskprintdetail);
             }
@@ -4811,10 +4811,10 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 tpicktaskheader = new picktaskheader();
-                tpicktaskheader.setCasecount(mCursor.getString(mCursor.getColumnIndex(CASE_COUNT)));
-                tpicktaskheader.setRoute(mCursor.getString(mCursor.getColumnIndex(PICK_ROUTE)));
-                tpicktaskheader.setStop(mCursor.getString(mCursor.getColumnIndex(PICK_STOP)));
-                tpicktaskheader.setWeight(mCursor.getString(mCursor.getColumnIndex(PICK_WEIGHT)));
+                tpicktaskheader.setCasecount(mCursor.getString(mCursor.getColumnIndexOrThrow(CASE_COUNT)));
+                tpicktaskheader.setRoute(mCursor.getString(mCursor.getColumnIndexOrThrow(PICK_ROUTE)));
+                tpicktaskheader.setStop(mCursor.getString(mCursor.getColumnIndexOrThrow(PICK_STOP)));
+                tpicktaskheader.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(PICK_WEIGHT)));
 
                 picktaskheader.add(tpicktaskheader);
             }
@@ -4882,8 +4882,8 @@ public class WMSDbHelper{
         picktaskdetail picktaskdetail = null;
 
 
-       mCursor = mSqlitedb.rawQuery("select rowNo, Tranlineno, Uom, Item, WLotNo, decnum,chgQty from picktaskdetail where Flag = 'Y'  and "  + " taskNUM = '" + Globals.gTaskNo + "'", null);
-       // mCursor = mSqlitedb.rawQuery("select rowNo, Tranlineno, Uom, Item, WLotNo, decnum from picktaskdetail where slot >''", null);
+        mCursor = mSqlitedb.rawQuery("select rowNo, Tranlineno, Uom, Item, WLotNo, decnum,chgQty from picktaskdetail where Flag = 'Y'  and "  + " taskNUM = '" + Globals.gTaskNo + "'", null);
+        // mCursor = mSqlitedb.rawQuery("select rowNo, Tranlineno, Uom, Item, WLotNo, decnum from picktaskdetail where slot >''", null);
 
         try {
             while (mCursor.moveToNext()) {
@@ -5170,12 +5170,12 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tloadpickpalletDetails = new loadpickpalletDetails();
 
-                tloadpickpalletDetails.setStop(mCursor.getString(mCursor.getColumnIndex(LPP_DETAIL_STOP)));
-                tloadpickpalletDetails.setLoaded(mCursor.getString(mCursor.getColumnIndex(LPP_DETAIL_LOADED)));
-                tloadpickpalletDetails.setReady(mCursor.getString(mCursor.getColumnIndex(LPP_DETAIL_READY)));
-                tloadpickpalletDetails.setTotal(mCursor.getString(mCursor.getColumnIndex(LPP_DETAIL_TOTAL)));
-                tloadpickpalletDetails.setPicker(mCursor.getString(mCursor.getColumnIndex(LPP_DETAIL_PICKER)));
-                tloadpickpalletDetails.setTaskno(mCursor.getString(mCursor.getColumnIndex(LPP_DETAIL_TASKNO)));
+                tloadpickpalletDetails.setStop(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_DETAIL_STOP)));
+                tloadpickpalletDetails.setLoaded(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_DETAIL_LOADED)));
+                tloadpickpalletDetails.setReady(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_DETAIL_READY)));
+                tloadpickpalletDetails.setTotal(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_DETAIL_TOTAL)));
+                tloadpickpalletDetails.setPicker(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_DETAIL_PICKER)));
+                tloadpickpalletDetails.setTaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_DETAIL_TASKNO)));
 
                 loadpickpalletDetails.add(tloadpickpalletDetails);
                 LogfileCreator.mAppendLog("Load Pick Pallet Detail:Load Pick Pallet Detail Loaded");
@@ -5200,12 +5200,12 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tloadpickpalletSummary = new loadpickpalletSummary();
 
-                tloadpickpalletSummary.setwmsDate(mCursor.getString(mCursor.getColumnIndex(LPP_SUMMARY_WMSDate)));
-                tloadpickpalletSummary.setTruck(mCursor.getString(mCursor.getColumnIndex(LPP_SUMMARY_TRUCK)));
-                tloadpickpalletSummary.setDock(mCursor.getString(mCursor.getColumnIndex(LPP_SUMMARY_DOCK)));
-                tloadpickpalletSummary.setRoutecnt(mCursor.getString(mCursor.getColumnIndex(LPP_SUMMARY_ROUTECNT)));
-                tloadpickpalletSummary.setStopcnt(mCursor.getString(mCursor.getColumnIndex(LPP_SUMMARY_STOPCNT)));
-                tloadpickpalletSummary.setPalcnt(mCursor.getString(mCursor.getColumnIndex(LPP_SUMMARY_PALCNT)));
+                tloadpickpalletSummary.setwmsDate(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_SUMMARY_WMSDate)));
+                tloadpickpalletSummary.setTruck(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_SUMMARY_TRUCK)));
+                tloadpickpalletSummary.setDock(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_SUMMARY_DOCK)));
+                tloadpickpalletSummary.setRoutecnt(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_SUMMARY_ROUTECNT)));
+                tloadpickpalletSummary.setStopcnt(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_SUMMARY_STOPCNT)));
+                tloadpickpalletSummary.setPalcnt(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_SUMMARY_PALCNT)));
 
                 loadpickpalletSummary.add(tloadpickpalletSummary);
                 LogfileCreator.mAppendLog("Load Pick Pallet Summary:Load Pick Pallet Summary Loaded");
@@ -5230,9 +5230,9 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tloadpickpalletWHIPLT = new loadpickpalletWHIPLT();
 
-                tloadpickpalletWHIPLT.setTaskno(mCursor.getString(mCursor.getColumnIndex(LPP_WHIPLT_TASKNO)));
-                tloadpickpalletWHIPLT.setPalno(mCursor.getString(mCursor.getColumnIndex(LPP_WHIPLT_PALNO)));
-                tloadpickpalletWHIPLT.setstgslot(mCursor.getString(mCursor.getColumnIndex(LPP_WHIPLT_STGSLOT)));
+                tloadpickpalletWHIPLT.setTaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_WHIPLT_TASKNO)));
+                tloadpickpalletWHIPLT.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_WHIPLT_PALNO)));
+                tloadpickpalletWHIPLT.setstgslot(mCursor.getString(mCursor.getColumnIndexOrThrow(LPP_WHIPLT_STGSLOT)));
 
                 loadpickpalletWHIPLT.add(tloadpickpalletWHIPLT);
             }
@@ -5256,68 +5256,68 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 repackFG = new RepackFG();
 
-                repackFG.setREPACKFG_PANO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PANO)));
-                repackFG.setREPACKFG_TRANLINENO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_TRANLINENO)));
-                repackFG.setREPACKFG_ITEM(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ITEM)));
-                repackFG.setREPACKFG_DESCRIP(mCursor.getString(mCursor.getColumnIndex(REPACKFG_DESCRIP)));
-                repackFG.setREPACKFG_UMEASUR(mCursor.getString(mCursor.getColumnIndex(REPACKFG_UMEASUR)));
-                repackFG.setREPACKFG_LOCTID(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LOCTID)));
-                repackFG.setREPACKFG_LOTNO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LOTNO)));
-                repackFG.setREPACKFG_SERIAL(mCursor.getString(mCursor.getColumnIndex(REPACKFG_SERIAL)));
-                repackFG.setREPACKFG_QTYMADE(mCursor.getString(mCursor.getColumnIndex(REPACKFG_QTYMADE)));
-                repackFG.setREPACKFG_COST(mCursor.getString(mCursor.getColumnIndex(REPACKFG_COST)));
-                repackFG.setREPACKFG_PADATE(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PADATE)));
-                repackFG.setREPACKFG_PASTAT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PASTAT)));
-                repackFG.setREPACKFG_LCKSTAT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LCKSTAT)));
-                repackFG.setREPACKFG_LCKUSER(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LCKUSER)));
-                repackFG.setREPACKFG_LCKDATE(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LCKDATE)));
-                repackFG.setREPACKFG_LCKTIME(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LCKTIME)));
-                repackFG.setREPACKFG_ADDUSER(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ADDUSER)));
-                repackFG.setREPACKFG_ADDDATE(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ADDDATE)));
-                repackFG.setREPACKFG_ADDTIME(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ADDTIME)));
-                repackFG.setREPACKFG_PRODLBL(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PRODLBL)));
-                repackFG.setREPACKFG_PACKCHG(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PACKCHG)));
-                repackFG.setREPACKFG_WASHCHG(mCursor.getString(mCursor.getColumnIndex(REPACKFG_WASHCHG)));
-                repackFG.setREPACKFG_COUNTRYID(mCursor.getString(mCursor.getColumnIndex(REPACKFG_COUNTRYID)));
-                repackFG.setREPACKFG_VENDNO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_VENDNO)));
-                repackFG.setREPACKFG_GRADE(mCursor.getString(mCursor.getColumnIndex(REPACKFG_GRADE)));
-                repackFG.setREPACKFG_PROJNO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PROJNO)));
-                repackFG.setREPACKFG_REMARKS(mCursor.getString(mCursor.getColumnIndex(REPACKFG_REMARKS)));
-                repackFG.setREPACKFG_LCSTQTY(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LCSTQTY)));
-                repackFG.setREPACKFG_CASE_PL(mCursor.getString(mCursor.getColumnIndex(REPACKFG_CASE_PL)));
-                repackFG.setREPACKFG_PALNO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PALNO)));
-                repackFG.setREPACKFG_SETID(mCursor.getString(mCursor.getColumnIndex(REPACKFG_SETID)));
-                repackFG.setREPACKFG_WEIGHT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_WEIGHT)));
-                repackFG.setREPACKFG_PALLET(mCursor.getString(mCursor.getColumnIndex(REPACKFG_PALLET)));
-                repackFG.setREPACKFG_ID_COL(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ID_COL)));
-                repackFG.setREPACKFG_BINNO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_BINNO)));
-                repackFG.setREPACKFG_POSTPRG(mCursor.getString(mCursor.getColumnIndex(REPACKFG_POSTPRG)));
-                repackFG.setREPACKFG_EXTPALLET(mCursor.getString(mCursor.getColumnIndex(REPACKFG_EXTPALLET)));
-                repackFG.setREPACKFG_EXTCUBE(mCursor.getString(mCursor.getColumnIndex(REPACKFG_EXTCUBE)));
-                repackFG.setREPACKFG_EXTWEIGHT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_EXTWEIGHT)));
-                repackFG.setREPACKFG_BEXTLCST(mCursor.getString(mCursor.getColumnIndex(REPACKFG_BEXTLCST)));
-                repackFG.setREPACKFG_EXTLCST(mCursor.getString(mCursor.getColumnIndex(REPACKFG_EXTLCST)));
-                repackFG.setREPACKFG_BEXTFEES(mCursor.getString(mCursor.getColumnIndex(REPACKFG_BEXTFEES)));
-                repackFG.setREPACKFG_EXTFEES(mCursor.getString(mCursor.getColumnIndex(REPACKFG_EXTFEES)));
-                repackFG.setREPACKFG_TPALLET(mCursor.getString(mCursor.getColumnIndex(REPACKFG_TPALLET)));
-                repackFG.setREPACKFG_TCUBE(mCursor.getString(mCursor.getColumnIndex(REPACKFG_TCUBE)));
-                repackFG.setREPACKFG_TWEIGHT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_TWEIGHT)));
-                repackFG.setREPACKFG_WLOTNO(mCursor.getString(mCursor.getColumnIndex(REPACKFG_WLOTNO)));
-                repackFG.setREPACKFG_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ORIGTRANLN)));
-                repackFG.setREPACKFG_ORIGTRANL(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ORIGTRANL)));
-                repackFG.setREPACKFG_ORIGDOCLN(mCursor.getString(mCursor.getColumnIndex(REPACKFG_ORIGDOCLN)));
-                repackFG.setREPACKFG_STKUMID(mCursor.getString(mCursor.getColumnIndex(REPACKFG_STKUMID)));
-                repackFG.setREPACKFG_USELOTS(mCursor.getString(mCursor.getColumnIndex(REPACKFG_USELOTS)));
-                repackFG.setREPACKFG_UMFACT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_UMFACT)));
-                repackFG.setREPACKFG_WEIGHT1(mCursor.getString(mCursor.getColumnIndex(REPACKFG_WEIGHT1)));
-                repackFG.setREPACKFG_VOLUME(mCursor.getString(mCursor.getColumnIndex(REPACKFG_VOLUME)));
-                repackFG.setREPACKFG_CATCHWT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_CATCHWT)));
-                repackFG.setREPACKFG_LOTREFID(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LOTREFID)));
-                repackFG.setREPACKFG_LOTEXPL(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LOTEXPL)));
-                repackFG.setREPACKFG_LINESPLIT(mCursor.getString(mCursor.getColumnIndex(REPACKFG_LINESPLIT)));
-                repackFG.setREPACKFG_TRKQTYPK(mCursor.getString(mCursor.getColumnIndex(REPACKFG_TRKQTYPK)));
-                repackFG.setREPACKFG_UPDFLAG(mCursor.getString(mCursor.getColumnIndex(REPACKFG_UPDFLAG)));
-                repackFG.setREPACKFG_VPLOCKED(mCursor.getString(mCursor.getColumnIndex(REPACKFG_VPLOCKED)));
+                repackFG.setREPACKFG_PANO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PANO)));
+                repackFG.setREPACKFG_TRANLINENO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_TRANLINENO)));
+                repackFG.setREPACKFG_ITEM(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ITEM)));
+                repackFG.setREPACKFG_DESCRIP(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_DESCRIP)));
+                repackFG.setREPACKFG_UMEASUR(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_UMEASUR)));
+                repackFG.setREPACKFG_LOCTID(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LOCTID)));
+                repackFG.setREPACKFG_LOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LOTNO)));
+                repackFG.setREPACKFG_SERIAL(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_SERIAL)));
+                repackFG.setREPACKFG_QTYMADE(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_QTYMADE)));
+                repackFG.setREPACKFG_COST(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_COST)));
+                repackFG.setREPACKFG_PADATE(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PADATE)));
+                repackFG.setREPACKFG_PASTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PASTAT)));
+                repackFG.setREPACKFG_LCKSTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LCKSTAT)));
+                repackFG.setREPACKFG_LCKUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LCKUSER)));
+                repackFG.setREPACKFG_LCKDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LCKDATE)));
+                repackFG.setREPACKFG_LCKTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LCKTIME)));
+                repackFG.setREPACKFG_ADDUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ADDUSER)));
+                repackFG.setREPACKFG_ADDDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ADDDATE)));
+                repackFG.setREPACKFG_ADDTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ADDTIME)));
+                repackFG.setREPACKFG_PRODLBL(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PRODLBL)));
+                repackFG.setREPACKFG_PACKCHG(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PACKCHG)));
+                repackFG.setREPACKFG_WASHCHG(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_WASHCHG)));
+                repackFG.setREPACKFG_COUNTRYID(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_COUNTRYID)));
+                repackFG.setREPACKFG_VENDNO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_VENDNO)));
+                repackFG.setREPACKFG_GRADE(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_GRADE)));
+                repackFG.setREPACKFG_PROJNO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PROJNO)));
+                repackFG.setREPACKFG_REMARKS(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_REMARKS)));
+                repackFG.setREPACKFG_LCSTQTY(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LCSTQTY)));
+                repackFG.setREPACKFG_CASE_PL(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_CASE_PL)));
+                repackFG.setREPACKFG_PALNO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PALNO)));
+                repackFG.setREPACKFG_SETID(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_SETID)));
+                repackFG.setREPACKFG_WEIGHT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_WEIGHT)));
+                repackFG.setREPACKFG_PALLET(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_PALLET)));
+                repackFG.setREPACKFG_ID_COL(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ID_COL)));
+                repackFG.setREPACKFG_BINNO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_BINNO)));
+                repackFG.setREPACKFG_POSTPRG(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_POSTPRG)));
+                repackFG.setREPACKFG_EXTPALLET(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_EXTPALLET)));
+                repackFG.setREPACKFG_EXTCUBE(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_EXTCUBE)));
+                repackFG.setREPACKFG_EXTWEIGHT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_EXTWEIGHT)));
+                repackFG.setREPACKFG_BEXTLCST(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_BEXTLCST)));
+                repackFG.setREPACKFG_EXTLCST(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_EXTLCST)));
+                repackFG.setREPACKFG_BEXTFEES(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_BEXTFEES)));
+                repackFG.setREPACKFG_EXTFEES(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_EXTFEES)));
+                repackFG.setREPACKFG_TPALLET(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_TPALLET)));
+                repackFG.setREPACKFG_TCUBE(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_TCUBE)));
+                repackFG.setREPACKFG_TWEIGHT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_TWEIGHT)));
+                repackFG.setREPACKFG_WLOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_WLOTNO)));
+                repackFG.setREPACKFG_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ORIGTRANLN)));
+                repackFG.setREPACKFG_ORIGTRANL(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ORIGTRANL)));
+                repackFG.setREPACKFG_ORIGDOCLN(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_ORIGDOCLN)));
+                repackFG.setREPACKFG_STKUMID(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_STKUMID)));
+                repackFG.setREPACKFG_USELOTS(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_USELOTS)));
+                repackFG.setREPACKFG_UMFACT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_UMFACT)));
+                repackFG.setREPACKFG_WEIGHT1(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_WEIGHT1)));
+                repackFG.setREPACKFG_VOLUME(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_VOLUME)));
+                repackFG.setREPACKFG_CATCHWT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_CATCHWT)));
+                repackFG.setREPACKFG_LOTREFID(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LOTREFID)));
+                repackFG.setREPACKFG_LOTEXPL(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LOTEXPL)));
+                repackFG.setREPACKFG_LINESPLIT(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_LINESPLIT)));
+                repackFG.setREPACKFG_TRKQTYPK(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_TRKQTYPK)));
+                repackFG.setREPACKFG_UPDFLAG(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_UPDFLAG)));
+                repackFG.setREPACKFG_VPLOCKED(mCursor.getString(mCursor.getColumnIndexOrThrow(REPACKFG_VPLOCKED)));
 
                 repackFGArrayList.add(repackFG);
             }
@@ -5341,54 +5341,54 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 repackIngredients = new RepackIngredients();
 
-                repackIngredients.setRIT_PANO(mCursor.getString(mCursor.getColumnIndex(RIT_PANO)));
-                repackIngredients.setRIT_TRANLINENO(mCursor.getString(mCursor.getColumnIndex(RIT_TRANLINENO)));
-                repackIngredients.setRIT_ITEM(mCursor.getString(mCursor.getColumnIndex(RIT_ITEM)));
-                repackIngredients.setRIT_DESCRIP(mCursor.getString(mCursor.getColumnIndex(RIT_DESCRIP)));
-                repackIngredients.setRIT_UMEASUR(mCursor.getString(mCursor.getColumnIndex(RIT_UMEASUR)));
-                repackIngredients.setRIT_LOCTID(mCursor.getString(mCursor.getColumnIndex(RIT_LOCTID)));
-                repackIngredients.setRIT_LOTNO(mCursor.getString(mCursor.getColumnIndex(RIT_LOTNO)));
-                repackIngredients.setRIT_SERIAL(mCursor.getString(mCursor.getColumnIndex(RIT_SERIAL)));
-                repackIngredients.setRIT_QTYUSED(mCursor.getString(mCursor.getColumnIndex(RIT_QTYUSED)));
-                repackIngredients.setRIT_COST(mCursor.getString(mCursor.getColumnIndex(RIT_COST)));
-                repackIngredients.setRIT_PADATE(mCursor.getString(mCursor.getColumnIndex(RIT_PADATE)));
-                repackIngredients.setRIT_PASTAT(mCursor.getString(mCursor.getColumnIndex(RIT_PASTAT)));
-                repackIngredients.setRIT_LCKSTAT(mCursor.getString(mCursor.getColumnIndex(RIT_LCKSTAT)));
-                repackIngredients.setRIT_LCKUSER(mCursor.getString(mCursor.getColumnIndex(RIT_LCKUSER)));
-                repackIngredients.setRIT_LCKDATE(mCursor.getString(mCursor.getColumnIndex(RIT_LCKDATE)));
-                repackIngredients.setRIT_LCKTIME(mCursor.getString(mCursor.getColumnIndex(RIT_LCKTIME)));
-                repackIngredients.setRIT_ADDUSER(mCursor.getString(mCursor.getColumnIndex(RIT_ADDUSER)));
-                repackIngredients.setRIT_ADDDATE(mCursor.getString(mCursor.getColumnIndex(RIT_ADDDATE)));
-                repackIngredients.setRIT_ADDTIME(mCursor.getString(mCursor.getColumnIndex(RIT_ADDTIME)));
-                repackIngredients.setRIT_COUNTRYID(mCursor.getString(mCursor.getColumnIndex(RIT_COUNTRYID)));
-                repackIngredients.setRIT_VENDNO(mCursor.getString(mCursor.getColumnIndex(RIT_VENDNO)));
-                repackIngredients.setRIT_BINNO(mCursor.getString(mCursor.getColumnIndex(RIT_BINNO)));
-                repackIngredients.setRIT_PALNO(mCursor.getString(mCursor.getColumnIndex(RIT_PALNO)));
-                repackIngredients.setRIT_REMARKS(mCursor.getString(mCursor.getColumnIndex(RIT_REMARKS)));
-                repackIngredients.setRIT_YIELD(mCursor.getString(mCursor.getColumnIndex(RIT_YIELD)));
-                repackIngredients.setRIT_SETID(mCursor.getString(mCursor.getColumnIndex(RIT_SETID)));
-                repackIngredients.setRIT_WEIGHT(mCursor.getString(mCursor.getColumnIndex(RIT_WEIGHT)));
-                repackIngredients.setRIT_ID_COL(mCursor.getString(mCursor.getColumnIndex(RIT_ID_COL)));
-                repackIngredients.setRIT_WLOTNO(mCursor.getString(mCursor.getColumnIndex(RIT_WLOTNO)));
-                repackIngredients.setRIT_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndex(RIT_ORIGTRANLN)));
-                repackIngredients.setRIT_STKUMID(mCursor.getString(mCursor.getColumnIndex(RIT_STKUMID)));
-                repackIngredients.setRIT_USELOTS(mCursor.getString(mCursor.getColumnIndex(RIT_USELOTS)));
-                repackIngredients.setRIT_UMFACT(mCursor.getString(mCursor.getColumnIndex(RIT_UMFACT)));
-                repackIngredients.setRIT_WEIGHT1(mCursor.getString(mCursor.getColumnIndex(RIT_WEIGHT1)));
-                repackIngredients.setRIT_VOLUME(mCursor.getString(mCursor.getColumnIndex(RIT_VOLUME)));
-                repackIngredients.setRIT_CATCHWT(mCursor.getString(mCursor.getColumnIndex(RIT_CATCHWT)));
-                repackIngredients.setRIT_LOTREFID(mCursor.getString(mCursor.getColumnIndex(RIT_LOTREFID)));
-                repackIngredients.setRIT_LOTEXPL(mCursor.getString(mCursor.getColumnIndex(RIT_LOTEXPL)));
-                repackIngredients.setRIT_LINESPLIT(mCursor.getString(mCursor.getColumnIndex(RIT_LINESPLIT)));
-                repackIngredients.setRIT_TRKQTYPK(mCursor.getString(mCursor.getColumnIndex(RIT_TRKQTYPK)));
-                repackIngredients.setRIT_UPDFLAG(mCursor.getString(mCursor.getColumnIndex(RIT_UPDFLAG)));
-                repackIngredients.setRIT_ADDFLAG(mCursor.getString(mCursor.getColumnIndex(RIT_ADDFLAG)));
-                repackIngredients.setRIT_SLOT(mCursor.getString(mCursor.getColumnIndex(RIT_SLOT)));
-                repackIngredients.setRIT_ALLOCQTY(mCursor.getString(mCursor.getColumnIndex(RIT_ALLOCQTY)));
-                repackIngredients.setRIT_TEMPALLOC(mCursor.getString(mCursor.getColumnIndex(RIT_TEMPALLOC)));
-                repackIngredients.setRIT_WHQTY(mCursor.getString(mCursor.getColumnIndex(RIT_WHQTY)));
-                repackIngredients.setRIT_ICQTY(mCursor.getString(mCursor.getColumnIndex(RIT_ICQTY)));
-                repackIngredients.setRIT_RPALLOCQTY(mCursor.getString(mCursor.getColumnIndex(RIT_RPALLOCQTY)));
+                repackIngredients.setRIT_PANO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PANO)));
+                repackIngredients.setRIT_TRANLINENO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TRANLINENO)));
+                repackIngredients.setRIT_ITEM(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ITEM)));
+                repackIngredients.setRIT_DESCRIP(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_DESCRIP)));
+                repackIngredients.setRIT_UMEASUR(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UMEASUR)));
+                repackIngredients.setRIT_LOCTID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOCTID)));
+                repackIngredients.setRIT_LOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTNO)));
+                repackIngredients.setRIT_SERIAL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SERIAL)));
+                repackIngredients.setRIT_QTYUSED(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_QTYUSED)));
+                repackIngredients.setRIT_COST(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_COST)));
+                repackIngredients.setRIT_PADATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PADATE)));
+                repackIngredients.setRIT_PASTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PASTAT)));
+                repackIngredients.setRIT_LCKSTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKSTAT)));
+                repackIngredients.setRIT_LCKUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKUSER)));
+                repackIngredients.setRIT_LCKDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKDATE)));
+                repackIngredients.setRIT_LCKTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKTIME)));
+                repackIngredients.setRIT_ADDUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDUSER)));
+                repackIngredients.setRIT_ADDDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDDATE)));
+                repackIngredients.setRIT_ADDTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDTIME)));
+                repackIngredients.setRIT_COUNTRYID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_COUNTRYID)));
+                repackIngredients.setRIT_VENDNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_VENDNO)));
+                repackIngredients.setRIT_BINNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_BINNO)));
+                repackIngredients.setRIT_PALNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PALNO)));
+                repackIngredients.setRIT_REMARKS(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_REMARKS)));
+                repackIngredients.setRIT_YIELD(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_YIELD)));
+                repackIngredients.setRIT_SETID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SETID)));
+                repackIngredients.setRIT_WEIGHT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WEIGHT)));
+                repackIngredients.setRIT_ID_COL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ID_COL)));
+                repackIngredients.setRIT_WLOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WLOTNO)));
+                repackIngredients.setRIT_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ORIGTRANLN)));
+                repackIngredients.setRIT_STKUMID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_STKUMID)));
+                repackIngredients.setRIT_USELOTS(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_USELOTS)));
+                repackIngredients.setRIT_UMFACT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UMFACT)));
+                repackIngredients.setRIT_WEIGHT1(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WEIGHT1)));
+                repackIngredients.setRIT_VOLUME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_VOLUME)));
+                repackIngredients.setRIT_CATCHWT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_CATCHWT)));
+                repackIngredients.setRIT_LOTREFID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTREFID)));
+                repackIngredients.setRIT_LOTEXPL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTEXPL)));
+                repackIngredients.setRIT_LINESPLIT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LINESPLIT)));
+                repackIngredients.setRIT_TRKQTYPK(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TRKQTYPK)));
+                repackIngredients.setRIT_UPDFLAG(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UPDFLAG)));
+                repackIngredients.setRIT_ADDFLAG(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDFLAG)));
+                repackIngredients.setRIT_SLOT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SLOT)));
+                repackIngredients.setRIT_ALLOCQTY(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ALLOCQTY)));
+                repackIngredients.setRIT_TEMPALLOC(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TEMPALLOC)));
+                repackIngredients.setRIT_WHQTY(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WHQTY)));
+                repackIngredients.setRIT_ICQTY(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ICQTY)));
+                repackIngredients.setRIT_RPALLOCQTY(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_RPALLOCQTY)));
 
                 repackIngredientsArrayList.add(repackIngredients);
             }
@@ -5414,29 +5414,29 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 pickTaskScanPallet = new PickTaskScanPallet();
 
-                pickTaskScanPallet.setPtsP_rpallocqty(mCursor.getString(mCursor.getColumnIndex(PTSP_RPALLOCQTY)));
-                pickTaskScanPallet.setPtsP_whqty(mCursor.getString(mCursor.getColumnIndex(PTSP_WHQTY)));
-                pickTaskScanPallet.setPtsP_icqty(mCursor.getString(mCursor.getColumnIndex(PTSP_ICQTY)));
-                pickTaskScanPallet.setPtsP_tqty(mCursor.getString(mCursor.getColumnIndex(PTSP_TQTY)));
-                pickTaskScanPallet.setPtsP_wlotno(mCursor.getString(mCursor.getColumnIndex(PTSP_WLOTNO)));
-                pickTaskScanPallet.setPtsP_lotrefid(mCursor.getString(mCursor.getColumnIndex(PTSP_LOTREFID)));
-                pickTaskScanPallet.setPtsP_item(mCursor.getString(mCursor.getColumnIndex(PTSP_ITEM)));
-                pickTaskScanPallet.setPtsP_loctid(mCursor.getString(mCursor.getColumnIndex(PTSP_LOCTID)));
-                pickTaskScanPallet.setPtsP_lotno(mCursor.getString(mCursor.getColumnIndex(PTSP_LOTNO)));
-                pickTaskScanPallet.setPtsP_slot(mCursor.getString(mCursor.getColumnIndex(PTSP_SLOT)));
-                pickTaskScanPallet.setPtsP_umeasur(mCursor.getString(mCursor.getColumnIndex(PTSP_UMEASUR)));
-                pickTaskScanPallet.setPtsP_itmdesc(mCursor.getString(mCursor.getColumnIndex(PTSP_ITMDESC)));
-                pickTaskScanPallet.setPtsP_weight(mCursor.getString(mCursor.getColumnIndex(PTSP_WEIGHT)));
-                pickTaskScanPallet.setPtsP_countryid(mCursor.getString(mCursor.getColumnIndex(PTSP_COUNTRYID)));
-                pickTaskScanPallet.setPtsP_serial(mCursor.getString(mCursor.getColumnIndex(PTSP_SERIAL)));
-                pickTaskScanPallet.setPtsP_volume(mCursor.getString(mCursor.getColumnIndex(PTSP_VOLUME)));
-                pickTaskScanPallet.setPtsP_catchwt(mCursor.getString(mCursor.getColumnIndex(PTSP_CATCHWT)));
-                pickTaskScanPallet.setPtsP_stkumid(mCursor.getString(mCursor.getColumnIndex(PTSP_STKUMID)));
-                pickTaskScanPallet.setPtsP_uselots(mCursor.getString(mCursor.getColumnIndex(PTSP_USELOTS)));
-                pickTaskScanPallet.setPtsP_umfact(mCursor.getString(mCursor.getColumnIndex(PTSP_UMFACT)));
-                pickTaskScanPallet.setPtsP_setid(mCursor.getString(mCursor.getColumnIndex(PTSP_SETID)));
-                pickTaskScanPallet.setPtsP_vendno(mCursor.getString(mCursor.getColumnIndex(PTSP_VENDNO)));
-                pickTaskScanPallet.setPtsP_cost(mCursor.getString(mCursor.getColumnIndex(PTSP_COST)));
+                pickTaskScanPallet.setPtsP_rpallocqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_RPALLOCQTY)));
+                pickTaskScanPallet.setPtsP_whqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_WHQTY)));
+                pickTaskScanPallet.setPtsP_icqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_ICQTY)));
+                pickTaskScanPallet.setPtsP_tqty(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_TQTY)));
+                pickTaskScanPallet.setPtsP_wlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_WLOTNO)));
+                pickTaskScanPallet.setPtsP_lotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_LOTREFID)));
+                pickTaskScanPallet.setPtsP_item(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_ITEM)));
+                pickTaskScanPallet.setPtsP_loctid(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_LOCTID)));
+                pickTaskScanPallet.setPtsP_lotno(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_LOTNO)));
+                pickTaskScanPallet.setPtsP_slot(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_SLOT)));
+                pickTaskScanPallet.setPtsP_umeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_UMEASUR)));
+                pickTaskScanPallet.setPtsP_itmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_ITMDESC)));
+                pickTaskScanPallet.setPtsP_weight(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_WEIGHT)));
+                pickTaskScanPallet.setPtsP_countryid(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_COUNTRYID)));
+                pickTaskScanPallet.setPtsP_serial(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_SERIAL)));
+                pickTaskScanPallet.setPtsP_volume(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_VOLUME)));
+                pickTaskScanPallet.setPtsP_catchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_CATCHWT)));
+                pickTaskScanPallet.setPtsP_stkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_STKUMID)));
+                pickTaskScanPallet.setPtsP_uselots(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_USELOTS)));
+                pickTaskScanPallet.setPtsP_umfact(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_UMFACT)));
+                pickTaskScanPallet.setPtsP_setid(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_SETID)));
+                pickTaskScanPallet.setPtsP_vendno(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_VENDNO)));
+                pickTaskScanPallet.setPtsP_cost(mCursor.getString(mCursor.getColumnIndexOrThrow(PTSP_COST)));
 
 
                 pickTaskScanPalletArrayList.add(pickTaskScanPallet);
@@ -5498,51 +5498,51 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 repackIngredients = new RepackIngredients();
 
-                repackIngredients.setRIT_PANO(mCursor.getString(mCursor.getColumnIndex(RIT_PANO)));
-                repackIngredients.setRIT_TRANLINENO(mCursor.getString(mCursor.getColumnIndex(RIT_TRANLINENO)));
-                repackIngredients.setRIT_ITEM(mCursor.getString(mCursor.getColumnIndex(RIT_ITEM)));
-                repackIngredients.setRIT_DESCRIP(mCursor.getString(mCursor.getColumnIndex(RIT_DESCRIP)));
-                repackIngredients.setRIT_UMEASUR(mCursor.getString(mCursor.getColumnIndex(RIT_UMEASUR)));
-                repackIngredients.setRIT_LOCTID(mCursor.getString(mCursor.getColumnIndex(RIT_LOCTID)));
-                repackIngredients.setRIT_LOTNO(mCursor.getString(mCursor.getColumnIndex(RIT_LOTNO)));
-                repackIngredients.setRIT_SERIAL(mCursor.getString(mCursor.getColumnIndex(RIT_SERIAL)));
-                repackIngredients.setRIT_QTYUSED(mCursor.getString(mCursor.getColumnIndex(RIT_QTYUSED)));
-                repackIngredients.setRIT_COST(mCursor.getString(mCursor.getColumnIndex(RIT_COST)));
-                repackIngredients.setRIT_PADATE(mCursor.getString(mCursor.getColumnIndex(RIT_PADATE)));
-                repackIngredients.setRIT_PASTAT(mCursor.getString(mCursor.getColumnIndex(RIT_PASTAT)));
-                repackIngredients.setRIT_LCKSTAT(mCursor.getString(mCursor.getColumnIndex(RIT_LCKSTAT)));
-                repackIngredients.setRIT_LCKUSER(mCursor.getString(mCursor.getColumnIndex(RIT_LCKUSER)));
-                repackIngredients.setRIT_LCKDATE(mCursor.getString(mCursor.getColumnIndex(RIT_LCKDATE)));
-                repackIngredients.setRIT_LCKTIME(mCursor.getString(mCursor.getColumnIndex(RIT_LCKTIME)));
-                repackIngredients.setRIT_ADDUSER(mCursor.getString(mCursor.getColumnIndex(RIT_ADDUSER)));
-                repackIngredients.setRIT_ADDDATE(mCursor.getString(mCursor.getColumnIndex(RIT_ADDDATE)));
-                repackIngredients.setRIT_ADDTIME(mCursor.getString(mCursor.getColumnIndex(RIT_ADDTIME)));
-                repackIngredients.setRIT_COUNTRYID(mCursor.getString(mCursor.getColumnIndex(RIT_COUNTRYID)));
-                repackIngredients.setRIT_VENDNO(mCursor.getString(mCursor.getColumnIndex(RIT_VENDNO)));
-                repackIngredients.setRIT_BINNO(mCursor.getString(mCursor.getColumnIndex(RIT_BINNO)));
-                repackIngredients.setRIT_PALNO(mCursor.getString(mCursor.getColumnIndex(RIT_PALNO)));
-                repackIngredients.setRIT_REMARKS(mCursor.getString(mCursor.getColumnIndex(RIT_REMARKS)));
-                repackIngredients.setRIT_YIELD(mCursor.getString(mCursor.getColumnIndex(RIT_YIELD)));
-                repackIngredients.setRIT_SETID(mCursor.getString(mCursor.getColumnIndex(RIT_SETID)));
-                repackIngredients.setRIT_WEIGHT(mCursor.getString(mCursor.getColumnIndex(RIT_WEIGHT)));
-                repackIngredients.setRIT_ID_COL(mCursor.getString(mCursor.getColumnIndex(RIT_ID_COL)));
-                repackIngredients.setRIT_WLOTNO(mCursor.getString(mCursor.getColumnIndex(RIT_WLOTNO)));
-                repackIngredients.setRIT_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndex(RIT_ORIGTRANLN)));
-                repackIngredients.setRIT_STKUMID(mCursor.getString(mCursor.getColumnIndex(RIT_STKUMID)));
-                repackIngredients.setRIT_USELOTS(mCursor.getString(mCursor.getColumnIndex(RIT_USELOTS)));
-                repackIngredients.setRIT_UMFACT(mCursor.getString(mCursor.getColumnIndex(RIT_UMFACT)));
-                repackIngredients.setRIT_WEIGHT1(mCursor.getString(mCursor.getColumnIndex(RIT_WEIGHT1)));
-                repackIngredients.setRIT_VOLUME(mCursor.getString(mCursor.getColumnIndex(RIT_VOLUME)));
-                repackIngredients.setRIT_CATCHWT(mCursor.getString(mCursor.getColumnIndex(RIT_CATCHWT)));
-                repackIngredients.setRIT_LOTREFID(mCursor.getString(mCursor.getColumnIndex(RIT_LOTREFID)));
-                repackIngredients.setRIT_LOTEXPL(mCursor.getString(mCursor.getColumnIndex(RIT_LOTEXPL)));
-                repackIngredients.setRIT_LINESPLIT(mCursor.getString(mCursor.getColumnIndex(RIT_LINESPLIT)));
-                repackIngredients.setRIT_TRKQTYPK(mCursor.getString(mCursor.getColumnIndex(RIT_TRKQTYPK)));
-                repackIngredients.setRIT_UPDFLAG(mCursor.getString(mCursor.getColumnIndex(RIT_UPDFLAG)));
-                repackIngredients.setRIT_ADDFLAG(mCursor.getString(mCursor.getColumnIndex(RIT_ADDFLAG)));
-                repackIngredients.setRIT_SLOT(mCursor.getString(mCursor.getColumnIndex(RIT_SLOT)));
-                repackIngredients.setRIT_ALLOCQTY(mCursor.getString(mCursor.getColumnIndex(RIT_ALLOCQTY)));
-                repackIngredients.setRIT_TEMPALLOC(mCursor.getString(mCursor.getColumnIndex(RIT_TEMPALLOC)));
+                repackIngredients.setRIT_PANO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PANO)));
+                repackIngredients.setRIT_TRANLINENO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TRANLINENO)));
+                repackIngredients.setRIT_ITEM(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ITEM)));
+                repackIngredients.setRIT_DESCRIP(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_DESCRIP)));
+                repackIngredients.setRIT_UMEASUR(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UMEASUR)));
+                repackIngredients.setRIT_LOCTID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOCTID)));
+                repackIngredients.setRIT_LOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTNO)));
+                repackIngredients.setRIT_SERIAL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SERIAL)));
+                repackIngredients.setRIT_QTYUSED(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_QTYUSED)));
+                repackIngredients.setRIT_COST(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_COST)));
+                repackIngredients.setRIT_PADATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PADATE)));
+                repackIngredients.setRIT_PASTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PASTAT)));
+                repackIngredients.setRIT_LCKSTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKSTAT)));
+                repackIngredients.setRIT_LCKUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKUSER)));
+                repackIngredients.setRIT_LCKDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKDATE)));
+                repackIngredients.setRIT_LCKTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKTIME)));
+                repackIngredients.setRIT_ADDUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDUSER)));
+                repackIngredients.setRIT_ADDDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDDATE)));
+                repackIngredients.setRIT_ADDTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDTIME)));
+                repackIngredients.setRIT_COUNTRYID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_COUNTRYID)));
+                repackIngredients.setRIT_VENDNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_VENDNO)));
+                repackIngredients.setRIT_BINNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_BINNO)));
+                repackIngredients.setRIT_PALNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PALNO)));
+                repackIngredients.setRIT_REMARKS(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_REMARKS)));
+                repackIngredients.setRIT_YIELD(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_YIELD)));
+                repackIngredients.setRIT_SETID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SETID)));
+                repackIngredients.setRIT_WEIGHT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WEIGHT)));
+                repackIngredients.setRIT_ID_COL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ID_COL)));
+                repackIngredients.setRIT_WLOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WLOTNO)));
+                repackIngredients.setRIT_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ORIGTRANLN)));
+                repackIngredients.setRIT_STKUMID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_STKUMID)));
+                repackIngredients.setRIT_USELOTS(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_USELOTS)));
+                repackIngredients.setRIT_UMFACT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UMFACT)));
+                repackIngredients.setRIT_WEIGHT1(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WEIGHT1)));
+                repackIngredients.setRIT_VOLUME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_VOLUME)));
+                repackIngredients.setRIT_CATCHWT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_CATCHWT)));
+                repackIngredients.setRIT_LOTREFID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTREFID)));
+                repackIngredients.setRIT_LOTEXPL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTEXPL)));
+                repackIngredients.setRIT_LINESPLIT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LINESPLIT)));
+                repackIngredients.setRIT_TRKQTYPK(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TRKQTYPK)));
+                repackIngredients.setRIT_UPDFLAG(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UPDFLAG)));
+                repackIngredients.setRIT_ADDFLAG(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDFLAG)));
+                repackIngredients.setRIT_SLOT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SLOT)));
+                repackIngredients.setRIT_ALLOCQTY(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ALLOCQTY)));
+                repackIngredients.setRIT_TEMPALLOC(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TEMPALLOC)));
 
                 repackIngredientsArrayList.add(repackIngredients);
             }
@@ -5566,51 +5566,51 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 repackIngredients = new RepackIngredients();
 
-                repackIngredients.setRIT_PANO(mCursor.getString(mCursor.getColumnIndex(RIT_PANO)));
-                repackIngredients.setRIT_TRANLINENO(mCursor.getString(mCursor.getColumnIndex(RIT_TRANLINENO)));
-                repackIngredients.setRIT_ITEM(mCursor.getString(mCursor.getColumnIndex(RIT_ITEM)));
-                repackIngredients.setRIT_DESCRIP(mCursor.getString(mCursor.getColumnIndex(RIT_DESCRIP)));
-                repackIngredients.setRIT_UMEASUR(mCursor.getString(mCursor.getColumnIndex(RIT_UMEASUR)));
-                repackIngredients.setRIT_LOCTID(mCursor.getString(mCursor.getColumnIndex(RIT_LOCTID)));
-                repackIngredients.setRIT_LOTNO(mCursor.getString(mCursor.getColumnIndex(RIT_LOTNO)));
-                repackIngredients.setRIT_SERIAL(mCursor.getString(mCursor.getColumnIndex(RIT_SERIAL)));
-                repackIngredients.setRIT_QTYUSED(mCursor.getString(mCursor.getColumnIndex(RIT_QTYUSED)));
-                repackIngredients.setRIT_COST(mCursor.getString(mCursor.getColumnIndex(RIT_COST)));
-                repackIngredients.setRIT_PADATE(mCursor.getString(mCursor.getColumnIndex(RIT_PADATE)));
-                repackIngredients.setRIT_PASTAT(mCursor.getString(mCursor.getColumnIndex(RIT_PASTAT)));
-                repackIngredients.setRIT_LCKSTAT(mCursor.getString(mCursor.getColumnIndex(RIT_LCKSTAT)));
-                repackIngredients.setRIT_LCKUSER(mCursor.getString(mCursor.getColumnIndex(RIT_LCKUSER)));
-                repackIngredients.setRIT_LCKDATE(mCursor.getString(mCursor.getColumnIndex(RIT_LCKDATE)));
-                repackIngredients.setRIT_LCKTIME(mCursor.getString(mCursor.getColumnIndex(RIT_LCKTIME)));
-                repackIngredients.setRIT_ADDUSER(mCursor.getString(mCursor.getColumnIndex(RIT_ADDUSER)));
-                repackIngredients.setRIT_ADDDATE(mCursor.getString(mCursor.getColumnIndex(RIT_ADDDATE)));
-                repackIngredients.setRIT_ADDTIME(mCursor.getString(mCursor.getColumnIndex(RIT_ADDTIME)));
-                repackIngredients.setRIT_COUNTRYID(mCursor.getString(mCursor.getColumnIndex(RIT_COUNTRYID)));
-                repackIngredients.setRIT_VENDNO(mCursor.getString(mCursor.getColumnIndex(RIT_VENDNO)));
-                repackIngredients.setRIT_BINNO(mCursor.getString(mCursor.getColumnIndex(RIT_BINNO)));
-                repackIngredients.setRIT_PALNO(mCursor.getString(mCursor.getColumnIndex(RIT_PALNO)));
-                repackIngredients.setRIT_REMARKS(mCursor.getString(mCursor.getColumnIndex(RIT_REMARKS)));
-                repackIngredients.setRIT_YIELD(mCursor.getString(mCursor.getColumnIndex(RIT_YIELD)));
-                repackIngredients.setRIT_SETID(mCursor.getString(mCursor.getColumnIndex(RIT_SETID)));
-                repackIngredients.setRIT_WEIGHT(mCursor.getString(mCursor.getColumnIndex(RIT_WEIGHT)));
-                repackIngredients.setRIT_ID_COL(mCursor.getString(mCursor.getColumnIndex(RIT_ID_COL)));
-                repackIngredients.setRIT_WLOTNO(mCursor.getString(mCursor.getColumnIndex(RIT_WLOTNO)));
-                repackIngredients.setRIT_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndex(RIT_ORIGTRANLN)));
-                repackIngredients.setRIT_STKUMID(mCursor.getString(mCursor.getColumnIndex(RIT_STKUMID)));
-                repackIngredients.setRIT_USELOTS(mCursor.getString(mCursor.getColumnIndex(RIT_USELOTS)));
-                repackIngredients.setRIT_UMFACT(mCursor.getString(mCursor.getColumnIndex(RIT_UMFACT)));
-                repackIngredients.setRIT_WEIGHT1(mCursor.getString(mCursor.getColumnIndex(RIT_WEIGHT1)));
-                repackIngredients.setRIT_VOLUME(mCursor.getString(mCursor.getColumnIndex(RIT_VOLUME)));
-                repackIngredients.setRIT_CATCHWT(mCursor.getString(mCursor.getColumnIndex(RIT_CATCHWT)));
-                repackIngredients.setRIT_LOTREFID(mCursor.getString(mCursor.getColumnIndex(RIT_LOTREFID)));
-                repackIngredients.setRIT_LOTEXPL(mCursor.getString(mCursor.getColumnIndex(RIT_LOTEXPL)));
-                repackIngredients.setRIT_LINESPLIT(mCursor.getString(mCursor.getColumnIndex(RIT_LINESPLIT)));
-                repackIngredients.setRIT_TRKQTYPK(mCursor.getString(mCursor.getColumnIndex(RIT_TRKQTYPK)));
-                repackIngredients.setRIT_UPDFLAG(mCursor.getString(mCursor.getColumnIndex(RIT_UPDFLAG)));
-                repackIngredients.setRIT_ADDFLAG(mCursor.getString(mCursor.getColumnIndex(RIT_ADDFLAG)));
-                repackIngredients.setRIT_SLOT(mCursor.getString(mCursor.getColumnIndex(RIT_SLOT)));
-                repackIngredients.setRIT_ALLOCQTY(mCursor.getString(mCursor.getColumnIndex(RIT_ALLOCQTY)));
-                repackIngredients.setRIT_TEMPALLOC(mCursor.getString(mCursor.getColumnIndex(RIT_TEMPALLOC)));
+                repackIngredients.setRIT_PANO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PANO)));
+                repackIngredients.setRIT_TRANLINENO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TRANLINENO)));
+                repackIngredients.setRIT_ITEM(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ITEM)));
+                repackIngredients.setRIT_DESCRIP(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_DESCRIP)));
+                repackIngredients.setRIT_UMEASUR(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UMEASUR)));
+                repackIngredients.setRIT_LOCTID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOCTID)));
+                repackIngredients.setRIT_LOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTNO)));
+                repackIngredients.setRIT_SERIAL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SERIAL)));
+                repackIngredients.setRIT_QTYUSED(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_QTYUSED)));
+                repackIngredients.setRIT_COST(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_COST)));
+                repackIngredients.setRIT_PADATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PADATE)));
+                repackIngredients.setRIT_PASTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PASTAT)));
+                repackIngredients.setRIT_LCKSTAT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKSTAT)));
+                repackIngredients.setRIT_LCKUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKUSER)));
+                repackIngredients.setRIT_LCKDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKDATE)));
+                repackIngredients.setRIT_LCKTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LCKTIME)));
+                repackIngredients.setRIT_ADDUSER(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDUSER)));
+                repackIngredients.setRIT_ADDDATE(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDDATE)));
+                repackIngredients.setRIT_ADDTIME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDTIME)));
+                repackIngredients.setRIT_COUNTRYID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_COUNTRYID)));
+                repackIngredients.setRIT_VENDNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_VENDNO)));
+                repackIngredients.setRIT_BINNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_BINNO)));
+                repackIngredients.setRIT_PALNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_PALNO)));
+                repackIngredients.setRIT_REMARKS(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_REMARKS)));
+                repackIngredients.setRIT_YIELD(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_YIELD)));
+                repackIngredients.setRIT_SETID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SETID)));
+                repackIngredients.setRIT_WEIGHT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WEIGHT)));
+                repackIngredients.setRIT_ID_COL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ID_COL)));
+                repackIngredients.setRIT_WLOTNO(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WLOTNO)));
+                repackIngredients.setRIT_ORIGTRANLN(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ORIGTRANLN)));
+                repackIngredients.setRIT_STKUMID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_STKUMID)));
+                repackIngredients.setRIT_USELOTS(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_USELOTS)));
+                repackIngredients.setRIT_UMFACT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UMFACT)));
+                repackIngredients.setRIT_WEIGHT1(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_WEIGHT1)));
+                repackIngredients.setRIT_VOLUME(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_VOLUME)));
+                repackIngredients.setRIT_CATCHWT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_CATCHWT)));
+                repackIngredients.setRIT_LOTREFID(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTREFID)));
+                repackIngredients.setRIT_LOTEXPL(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LOTEXPL)));
+                repackIngredients.setRIT_LINESPLIT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_LINESPLIT)));
+                repackIngredients.setRIT_TRKQTYPK(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TRKQTYPK)));
+                repackIngredients.setRIT_UPDFLAG(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_UPDFLAG)));
+                repackIngredients.setRIT_ADDFLAG(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ADDFLAG)));
+                repackIngredients.setRIT_SLOT(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_SLOT)));
+                repackIngredients.setRIT_ALLOCQTY(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_ALLOCQTY)));
+                repackIngredients.setRIT_TEMPALLOC(mCursor.getString(mCursor.getColumnIndexOrThrow(RIT_TEMPALLOC)));
 
                 repackIngredientsArrayList.add(repackIngredients);
             }
@@ -5636,43 +5636,43 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndex(DETAIL_TASKNO)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
-              //  tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TASKNO)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
+                //  tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -5700,45 +5700,45 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndex(DETAIL_TASKNO)));
-                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_CHGQTY)));
-                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_OTQTYPICKED)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
-            //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TASKNO)));
+                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CHGQTY)));
+                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_OTQTYPICKED)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
+                //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -5759,49 +5759,49 @@ public class WMSDbHelper{
         picktaskdetail tpicktaskdetail = null;
 
         //mCursor = mSqlitedb.rawQuery("select * from picktaskdetail", null);
-       // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where wlotno > ' '  AND stagingSlot > ' ' AND taskNum = '" + Globals.gTaskNo + "' order by rowno desc ", null);
+        // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where wlotno > ' '  AND stagingSlot > ' ' AND taskNum = '" + Globals.gTaskNo + "' order by rowno desc ", null);
         mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where wlotno > ' ' AND taskNum = '" + Globals.gTaskNo + "' order by rowno desc ", null);
         try {
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndex(DETAIL_TASKNO)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
-            //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TASKNO)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
+                //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -5828,44 +5828,44 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndex(DETAIL_TASKNO)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
-                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_OTQTYPICKED)));
-                //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TASKNO)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
+                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_OTQTYPICKED)));
+                //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -5892,44 +5892,44 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndex(DETAIL_TASKNO)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
-                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_OTQTYPICKED)));
-                //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setDetailsTaskNum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TASKNO)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
+                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_OTQTYPICKED)));
+                //    tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -5966,43 +5966,43 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
-                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_CHGQTY)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
+                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CHGQTY)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -6027,7 +6027,7 @@ public class WMSDbHelper{
         ArrayList<picktaskdetail> pickListdetail = new ArrayList<>();
         picktaskdetail tpicktaskdetail = null;
 
-       // mCursor = mSqlitedb.rawQuery("select * from picktaskrevertolddata  ", null);
+        // mCursor = mSqlitedb.rawQuery("select * from picktaskrevertolddata  ", null);
         mCursor = mSqlitedb.rawQuery("select * from picktaskrevertolddata where tempQty <>'' and tempQty <>'0'", null);
 
 
@@ -6035,44 +6035,44 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
-                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_CHGQTY)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
-                tpicktaskdetail.setTempQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TEMPQTY)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
+                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CHGQTY)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
+                tpicktaskdetail.setTempQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TEMPQTY)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -6101,44 +6101,44 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
-                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_CHGQTY)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
-                tpicktaskdetail.setTempQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TEMPQTY)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
+                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CHGQTY)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
+                tpicktaskdetail.setTempQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TEMPQTY)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -6171,43 +6171,43 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndex(DETAIL_ISEDITED)));
-                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_CHGQTY)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setIsedited(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ISEDITED)));
+                tpicktaskdetail.setChgQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CHGQTY)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -6234,46 +6234,46 @@ public class WMSDbHelper{
         picktaskdetail tpicktaskdetail = null;
 
         mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where lotrefid = '"+ wlotNo +"'", null);
-                //mCursor = mSqlitedb.rawQuery("select invtype from physicalcountICITEM where item = '"+ item +"'", null);
+        //mCursor = mSqlitedb.rawQuery("select invtype from physicalcountICITEM where item = '"+ item +"'", null);
 
         try {
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -6302,40 +6302,40 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -6361,40 +6361,40 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
 
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setpickDuration(mCursor.getColumnIndex(DETAIL_PICKDURATION));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setpickDuration(mCursor.getColumnIndexOrThrow(DETAIL_PICKDURATION));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
 
 
                 pickListdetail.add(tpicktaskdetail);
@@ -6534,27 +6534,27 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tmovetaskdetail = new movetaskdetail();
 
-                tmovetaskdetail.setTaskno(mCursor.getString(mCursor.getColumnIndex(MTD_TASKNO)));
-                tmovetaskdetail.setTasktype(mCursor.getString(mCursor.getColumnIndex(MTD_TASKTYPE)));
-                tmovetaskdetail.setStatus(mCursor.getString(mCursor.getColumnIndex(MTD_STATUS)));
-                tmovetaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(MTD_TRANLINENO)));
-                tmovetaskdetail.setChildID(mCursor.getString(mCursor.getColumnIndex(MTD_CHILDID)));
-                tmovetaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(MTD_ITEM)));
-                tmovetaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndex(MTD_LOCTID)));
-                tmovetaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndex(MTD_WLOTNO)));
-                tmovetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndex(MTD_PALNO)));
-                tmovetaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndex(MTD_UMEASUR)));
-                tmovetaskdetail.setTqtyrq(mCursor.getString(mCursor.getColumnIndex(MTD_TQTYRQ)));
-                tmovetaskdetail.setTqtyact(mCursor.getString(mCursor.getColumnIndex(MTD_TQTYACT)));
-                tmovetaskdetail.setFromSlot(mCursor.getString(mCursor.getColumnIndex(MTD_FROMSLOT)));
-                tmovetaskdetail.setToSlot(mCursor.getString(mCursor.getColumnIndex(MTD_TOSLOT)));
-                tmovetaskdetail.setItmdesc(mCursor.getString(mCursor.getColumnIndex(MTD_ITEMDESC)));
-                tmovetaskdetail.setPckdesc(mCursor.getString(mCursor.getColumnIndex(MTD_PCKDESC)));
-                tmovetaskdetail.setWhqty(mCursor.getString(mCursor.getColumnIndex(MTD_WHQTY)));
-                tmovetaskdetail.setAllocqty(mCursor.getString(mCursor.getColumnIndex(MTD_ALLOCQTY)));
-                tmovetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(MTD_FLAG)));
-                tmovetaskdetail.setLocked(mCursor.getString(mCursor.getColumnIndex(MTD_LOCKED)));
-                tmovetaskdetail.setEdited(mCursor.getString(mCursor.getColumnIndex(MTD_EDITED)));
+                tmovetaskdetail.setTaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TASKNO)));
+                tmovetaskdetail.setTasktype(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TASKTYPE)));
+                tmovetaskdetail.setStatus(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_STATUS)));
+                tmovetaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TRANLINENO)));
+                tmovetaskdetail.setChildID(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_CHILDID)));
+                tmovetaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ITEM)));
+                tmovetaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_LOCTID)));
+                tmovetaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_WLOTNO)));
+                tmovetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_PALNO)));
+                tmovetaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_UMEASUR)));
+                tmovetaskdetail.setTqtyrq(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TQTYRQ)));
+                tmovetaskdetail.setTqtyact(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TQTYACT)));
+                tmovetaskdetail.setFromSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_FROMSLOT)));
+                tmovetaskdetail.setToSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TOSLOT)));
+                tmovetaskdetail.setItmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ITEMDESC)));
+                tmovetaskdetail.setPckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_PCKDESC)));
+                tmovetaskdetail.setWhqty(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_WHQTY)));
+                tmovetaskdetail.setAllocqty(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ALLOCQTY)));
+                tmovetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_FLAG)));
+                tmovetaskdetail.setLocked(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_LOCKED)));
+                tmovetaskdetail.setEdited(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_EDITED)));
 
                 moveTaskListDetail.add(tmovetaskdetail);
             }
@@ -6578,27 +6578,27 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tmovetaskdetail = new movetaskdetail();
 
-                tmovetaskdetail.setTaskno(mCursor.getString(mCursor.getColumnIndex(MTD_TASKNO)));
-                tmovetaskdetail.setTasktype(mCursor.getString(mCursor.getColumnIndex(MTD_TASKTYPE)));
-                tmovetaskdetail.setStatus(mCursor.getString(mCursor.getColumnIndex(MTD_STATUS)));
-                tmovetaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(MTD_TRANLINENO)));
-                tmovetaskdetail.setChildID(mCursor.getString(mCursor.getColumnIndex(MTD_CHILDID)));
-                tmovetaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(MTD_ITEM)));
-                tmovetaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndex(MTD_LOCTID)));
-                tmovetaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndex(MTD_WLOTNO)));
-                tmovetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndex(MTD_PALNO)));
-                tmovetaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndex(MTD_UMEASUR)));
-                tmovetaskdetail.setTqtyrq(mCursor.getString(mCursor.getColumnIndex(MTD_TQTYRQ)));
-                tmovetaskdetail.setTqtyact(mCursor.getString(mCursor.getColumnIndex(MTD_TQTYACT)));
-                tmovetaskdetail.setFromSlot(mCursor.getString(mCursor.getColumnIndex(MTD_FROMSLOT)));
-                tmovetaskdetail.setToSlot(mCursor.getString(mCursor.getColumnIndex(MTD_TOSLOT)));
-                tmovetaskdetail.setItmdesc(mCursor.getString(mCursor.getColumnIndex(MTD_ITEMDESC)));
-                tmovetaskdetail.setPckdesc(mCursor.getString(mCursor.getColumnIndex(MTD_PCKDESC)));
-                tmovetaskdetail.setWhqty(mCursor.getString(mCursor.getColumnIndex(MTD_WHQTY)));
-                tmovetaskdetail.setAllocqty(mCursor.getString(mCursor.getColumnIndex(MTD_ALLOCQTY)));
-                tmovetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(MTD_FLAG)));
-                tmovetaskdetail.setLocked(mCursor.getString(mCursor.getColumnIndex(MTD_LOCKED)));
-                tmovetaskdetail.setEdited(mCursor.getString(mCursor.getColumnIndex(MTD_EDITED)));
+                tmovetaskdetail.setTaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TASKNO)));
+                tmovetaskdetail.setTasktype(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TASKTYPE)));
+                tmovetaskdetail.setStatus(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_STATUS)));
+                tmovetaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TRANLINENO)));
+                tmovetaskdetail.setChildID(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_CHILDID)));
+                tmovetaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ITEM)));
+                tmovetaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_LOCTID)));
+                tmovetaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_WLOTNO)));
+                tmovetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_PALNO)));
+                tmovetaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_UMEASUR)));
+                tmovetaskdetail.setTqtyrq(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TQTYRQ)));
+                tmovetaskdetail.setTqtyact(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TQTYACT)));
+                tmovetaskdetail.setFromSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_FROMSLOT)));
+                tmovetaskdetail.setToSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TOSLOT)));
+                tmovetaskdetail.setItmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ITEMDESC)));
+                tmovetaskdetail.setPckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_PCKDESC)));
+                tmovetaskdetail.setWhqty(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_WHQTY)));
+                tmovetaskdetail.setAllocqty(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ALLOCQTY)));
+                tmovetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_FLAG)));
+                tmovetaskdetail.setLocked(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_LOCKED)));
+                tmovetaskdetail.setEdited(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_EDITED)));
 
                 moveTaskListDetail.add(tmovetaskdetail);
             }
@@ -6617,33 +6617,33 @@ public class WMSDbHelper{
         ArrayList<movetaskdetail> moveTaskListDetail = new ArrayList<>();
         movetaskdetail tmovetaskdetail = null;
 
-       // mCursor = mSqlitedb.rawQuery("select * from movetaskdetail ", null);
+        // mCursor = mSqlitedb.rawQuery("select * from movetaskdetail ", null);
         mCursor = mSqlitedb.rawQuery("select * from movetaskdetail where taskno = '" + taskNo + "'", null);
         try {
             while (mCursor.moveToNext()) {
                 tmovetaskdetail = new movetaskdetail();
 
-                tmovetaskdetail.setTaskno(mCursor.getString(mCursor.getColumnIndex(MTD_TASKNO)));
-                tmovetaskdetail.setTasktype(mCursor.getString(mCursor.getColumnIndex(MTD_TASKTYPE)));
-                tmovetaskdetail.setStatus(mCursor.getString(mCursor.getColumnIndex(MTD_STATUS)));
-                tmovetaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(MTD_TRANLINENO)));
-                tmovetaskdetail.setChildID(mCursor.getString(mCursor.getColumnIndex(MTD_CHILDID)));
-                tmovetaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(MTD_ITEM)));
-                tmovetaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndex(MTD_LOCTID)));
-                tmovetaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndex(MTD_WLOTNO)));
-                tmovetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndex(MTD_PALNO)));
-                tmovetaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndex(MTD_UMEASUR)));
-                tmovetaskdetail.setTqtyrq(mCursor.getString(mCursor.getColumnIndex(MTD_TQTYRQ)));
-                tmovetaskdetail.setTqtyact(mCursor.getString(mCursor.getColumnIndex(MTD_TQTYACT)));
-                tmovetaskdetail.setFromSlot(mCursor.getString(mCursor.getColumnIndex(MTD_FROMSLOT)));
-                tmovetaskdetail.setToSlot(mCursor.getString(mCursor.getColumnIndex(MTD_TOSLOT)));
-                tmovetaskdetail.setItmdesc(mCursor.getString(mCursor.getColumnIndex(MTD_ITEMDESC)));
-                tmovetaskdetail.setPckdesc(mCursor.getString(mCursor.getColumnIndex(MTD_PCKDESC)));
-                tmovetaskdetail.setWhqty(mCursor.getString(mCursor.getColumnIndex(MTD_WHQTY)));
-                tmovetaskdetail.setAllocqty(mCursor.getString(mCursor.getColumnIndex(MTD_ALLOCQTY)));
-                tmovetaskdetail.setLocked(mCursor.getString(mCursor.getColumnIndex(MTD_LOCKED)));
-                tmovetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(MTD_FLAG)));
-                tmovetaskdetail.setEdited(mCursor.getString(mCursor.getColumnIndex(MTD_EDITED)));
+                tmovetaskdetail.setTaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TASKNO)));
+                tmovetaskdetail.setTasktype(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TASKTYPE)));
+                tmovetaskdetail.setStatus(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_STATUS)));
+                tmovetaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TRANLINENO)));
+                tmovetaskdetail.setChildID(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_CHILDID)));
+                tmovetaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ITEM)));
+                tmovetaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_LOCTID)));
+                tmovetaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_WLOTNO)));
+                tmovetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_PALNO)));
+                tmovetaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_UMEASUR)));
+                tmovetaskdetail.setTqtyrq(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TQTYRQ)));
+                tmovetaskdetail.setTqtyact(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TQTYACT)));
+                tmovetaskdetail.setFromSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_FROMSLOT)));
+                tmovetaskdetail.setToSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_TOSLOT)));
+                tmovetaskdetail.setItmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ITEMDESC)));
+                tmovetaskdetail.setPckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_PCKDESC)));
+                tmovetaskdetail.setWhqty(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_WHQTY)));
+                tmovetaskdetail.setAllocqty(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_ALLOCQTY)));
+                tmovetaskdetail.setLocked(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_LOCKED)));
+                tmovetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_FLAG)));
+                tmovetaskdetail.setEdited(mCursor.getString(mCursor.getColumnIndexOrThrow(MTD_EDITED)));
 
                 moveTaskListDetail.add(tmovetaskdetail);
             }
@@ -6666,34 +6666,34 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskdetail = new receivetaskdetail();
 
-                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndex(RTD_TASKNO)));
-                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndex(RTD_TRANLINENO)));
-                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndex(RTD_DOCTYPE)));
-                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCNO)));
-                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCLINENO)));
-                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndex(RTD_ITEM)));
-                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndex(RTD_LOCTID)));
-                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndex(RTD_WLOTNO)));
-                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndex(RTD_UMEASUR)));
-                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndex(RTD_WMSSTAT)));
-                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYREC)));
-                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TRKQTYREC)));
-                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndex(RTD_REVLEV)));
-                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYINC)));
-                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndex(RTD_ITMDESC)));
-                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndex(RTD_PCKDESC)));
-                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndex(RTD_COUNTRYID)));
-                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndex(RTD_ITEMSHOW)));
-                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndex(RTD_COLLECTION)));
-                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndex(RTD_WELEMENT)));
-                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndex(RTD_WIDGETID)));
-                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndex(RTD_CATCHWT)));
-                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(RTD_DECNUM)));
-                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndex(RTD_LOTREFID)));
-                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(RTD_LINESPLIT)));
-                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(RTD_FLAG)));
-                treceivetaskdetail.setrowNo(mCursor.getString(mCursor.getColumnIndex(RTD_ROWNO)));
-                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndex(RTD_PALNO)));
+                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TASKNO)));
+                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRANLINENO)));
+                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCTYPE)));
+                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCNO)));
+                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCLINENO)));
+                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEM)));
+                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOCTID)));
+                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WLOTNO)));
+                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_UMEASUR)));
+                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WMSSTAT)));
+                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYREC)));
+                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRKQTYREC)));
+                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_REVLEV)));
+                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYINC)));
+                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITMDESC)));
+                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PCKDESC)));
+                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COUNTRYID)));
+                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEMSHOW)));
+                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COLLECTION)));
+                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WELEMENT)));
+                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WIDGETID)));
+                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_CATCHWT)));
+                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DECNUM)));
+                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOTREFID)));
+                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LINESPLIT)));
+                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_FLAG)));
+                treceivetaskdetail.setrowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ROWNO)));
+                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PALNO)));
 
                 receiveListDetail.add(treceivetaskdetail);
             }
@@ -6717,17 +6717,17 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 mmTran = new MoveManuallyTransaction();
 
-                mmTran.setMmTranWlotno(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_WLOTNO)));
-                mmTran.setMmTranItem(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_ITEMNO)));
-                mmTran.setMmTranSlot(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_SLOTNO)));
-                mmTran.setMmTranLoctid(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_LOCTID)));
-                mmTran.setMmTranUOM(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_UOM)));
-                mmTran.setMmTranQty(Double.parseDouble(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_QTY))));
-                mmTran.setMmTranTrkqty(Double.parseDouble(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_TRKQTY))));
-                mmTran.setMmTranEqty(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_EQTY)));
-                mmTran.setMmTranItmDesc(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_ITMDESC)));
-                mmTran.setMmTranCatchwt(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_CATCHWT)));
-                mmTran.setMmTranLotrefid(mCursor.getString(mCursor.getColumnIndex(MOVE_MANUALLY_TRANSACTION_LotrefId)));
+                mmTran.setMmTranWlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_WLOTNO)));
+                mmTran.setMmTranItem(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_ITEMNO)));
+                mmTran.setMmTranSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_SLOTNO)));
+                mmTran.setMmTranLoctid(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_LOCTID)));
+                mmTran.setMmTranUOM(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_UOM)));
+                mmTran.setMmTranQty(Double.parseDouble(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_QTY))));
+                mmTran.setMmTranTrkqty(Double.parseDouble(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_TRKQTY))));
+                mmTran.setMmTranEqty(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_EQTY)));
+                mmTran.setMmTranItmDesc(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_ITMDESC)));
+                mmTran.setMmTranCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_CATCHWT)));
+                mmTran.setMmTranLotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(MOVE_MANUALLY_TRANSACTION_LotrefId)));
 
                 mmTranList.add(mmTran);
             }
@@ -6753,13 +6753,13 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskheader = new receivetaskheader();
 
-                treceivetaskheader.setdescrip(mCursor.getString(mCursor.getColumnIndex(RTH_DESCRIP)));
-                treceivetaskheader.setvenddescrip(mCursor.getString(mCursor.getColumnIndex(RTH_VENDDESCRIP)));
-                treceivetaskheader.setcasecounted(mCursor.getString(mCursor.getColumnIndex(RTH_CASECOUNTED)));
-                treceivetaskheader.setcasetotal(mCursor.getString(mCursor.getColumnIndex(RTH_CASETOTAL)));
-                treceivetaskheader.setplttotal(mCursor.getString(mCursor.getColumnIndex(RTH_PLTOTAL)));
-                treceivetaskheader.setpltcounted(mCursor.getString(mCursor.getColumnIndex(RTH_PLTCOUNTED)));
-                treceivetaskheader.setwmsdate(mCursor.getString(mCursor.getColumnIndex(RTH_WMSDATE)));
+                treceivetaskheader.setdescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(RTH_DESCRIP)));
+                treceivetaskheader.setvenddescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(RTH_VENDDESCRIP)));
+                treceivetaskheader.setcasecounted(mCursor.getString(mCursor.getColumnIndexOrThrow(RTH_CASECOUNTED)));
+                treceivetaskheader.setcasetotal(mCursor.getString(mCursor.getColumnIndexOrThrow(RTH_CASETOTAL)));
+                treceivetaskheader.setplttotal(mCursor.getString(mCursor.getColumnIndexOrThrow(RTH_PLTOTAL)));
+                treceivetaskheader.setpltcounted(mCursor.getString(mCursor.getColumnIndexOrThrow(RTH_PLTCOUNTED)));
+                treceivetaskheader.setwmsdate(mCursor.getString(mCursor.getColumnIndexOrThrow(RTH_WMSDATE)));
                 receiveListHeader.add(treceivetaskheader);
             }
         } catch (Exception e) {
@@ -6808,10 +6808,10 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 treceivetaskloadtype = new receivetaskloadtype();
-                treceivetaskloadtype.setwelement(mCursor.getString(mCursor.getColumnIndex(RTLT_WELEMENT)));
-                treceivetaskloadtype.setcollection(mCursor.getString(mCursor.getColumnIndex(RTLT_COLLECTION)));
-                treceivetaskloadtype.setwidgetID(mCursor.getString(mCursor.getColumnIndex(RTLT_WIDGETID)));
-                treceivetaskloadtype.setLoadId(mCursor.getString(mCursor.getColumnIndex(RTLT_LOADID)));
+                treceivetaskloadtype.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(RTLT_WELEMENT)));
+                treceivetaskloadtype.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(RTLT_COLLECTION)));
+                treceivetaskloadtype.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(RTLT_WIDGETID)));
+                treceivetaskloadtype.setLoadId(mCursor.getString(mCursor.getColumnIndexOrThrow(RTLT_LOADID)));
 
                 receiveLoadList.add(treceivetaskloadtype);
             }
@@ -6837,15 +6837,15 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskWHRPLT = new receivetaskWHRPLT();
 
-                treceivetaskWHRPLT.settaskno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TASKNO)));
-                treceivetaskWHRPLT.settasklineno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TASKLINENO)));
-                treceivetaskWHRPLT.setpltlineno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PLTLINENO)));
-                treceivetaskWHRPLT.settqty(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TQTY)));
-                treceivetaskWHRPLT.setpltstat(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PLTSTAT)));
-                treceivetaskWHRPLT.setprtplttag(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PRTPLTTAG)));
-                treceivetaskWHRPLT.settrkqty(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TRKQTY)));
-                treceivetaskWHRPLT.setSlot(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_SLOT)));
-                treceivetaskWHRPLT.setgTin(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_GTIN)));
+                treceivetaskWHRPLT.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TASKNO)));
+                treceivetaskWHRPLT.settasklineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TASKLINENO)));
+                treceivetaskWHRPLT.setpltlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PLTLINENO)));
+                treceivetaskWHRPLT.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TQTY)));
+                treceivetaskWHRPLT.setpltstat(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PLTSTAT)));
+                treceivetaskWHRPLT.setprtplttag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PRTPLTTAG)));
+                treceivetaskWHRPLT.settrkqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TRKQTY)));
+                treceivetaskWHRPLT.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_SLOT)));
+                treceivetaskWHRPLT.setgTin(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_GTIN)));
 
                 receiveListWHRPLT.add(treceivetaskWHRPLT);
             }
@@ -6870,16 +6870,16 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskWHRPLT = new receivetaskWHRPLT();
 
-                treceivetaskWHRPLT.settaskno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TASKNO)));
-                treceivetaskWHRPLT.settasklineno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TASKLINENO)));
-                treceivetaskWHRPLT.setpltlineno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PLTLINENO)));
-                treceivetaskWHRPLT.settqty(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TQTY)));
-                treceivetaskWHRPLT.setpltstat(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PLTSTAT)));
-                treceivetaskWHRPLT.setprtplttag(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PRTPLTTAG)));
-                treceivetaskWHRPLT.settrkqty(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TRKQTY)));
-                treceivetaskWHRPLT.setSlot(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_SLOT)));
-                treceivetaskWHRPLT.setgTin(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_GTIN)));
-                treceivetaskWHRPLT.setFlag(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_FLAG)));
+                treceivetaskWHRPLT.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TASKNO)));
+                treceivetaskWHRPLT.settasklineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TASKLINENO)));
+                treceivetaskWHRPLT.setpltlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PLTLINENO)));
+                treceivetaskWHRPLT.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TQTY)));
+                treceivetaskWHRPLT.setpltstat(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PLTSTAT)));
+                treceivetaskWHRPLT.setprtplttag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PRTPLTTAG)));
+                treceivetaskWHRPLT.settrkqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TRKQTY)));
+                treceivetaskWHRPLT.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_SLOT)));
+                treceivetaskWHRPLT.setgTin(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_GTIN)));
+                treceivetaskWHRPLT.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_FLAG)));
 
                 receiveListWHRPLT.add(treceivetaskWHRPLT);
             }
@@ -6904,16 +6904,16 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskWHRPLT = new receivetaskWHRPLT();
 
-                treceivetaskWHRPLT.settaskno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TASKNO)));
-                treceivetaskWHRPLT.settasklineno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TASKLINENO)));
-                treceivetaskWHRPLT.setpltlineno(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PLTLINENO)));
-                treceivetaskWHRPLT.settqty(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TQTY)));
-                treceivetaskWHRPLT.setpltstat(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PLTSTAT)));
-                treceivetaskWHRPLT.setprtplttag(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_PRTPLTTAG)));
-                treceivetaskWHRPLT.settrkqty(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_TRKQTY)));
-                treceivetaskWHRPLT.setSlot(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_SLOT)));
-                treceivetaskWHRPLT.setgTin(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_GTIN)));
-                treceivetaskWHRPLT.setFlag(mCursor.getString(mCursor.getColumnIndex(RTWHRPLT_FLAG)));
+                treceivetaskWHRPLT.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TASKNO)));
+                treceivetaskWHRPLT.settasklineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TASKLINENO)));
+                treceivetaskWHRPLT.setpltlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PLTLINENO)));
+                treceivetaskWHRPLT.settqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TQTY)));
+                treceivetaskWHRPLT.setpltstat(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PLTSTAT)));
+                treceivetaskWHRPLT.setprtplttag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_PRTPLTTAG)));
+                treceivetaskWHRPLT.settrkqty(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_TRKQTY)));
+                treceivetaskWHRPLT.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_SLOT)));
+                treceivetaskWHRPLT.setgTin(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_GTIN)));
+                treceivetaskWHRPLT.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTWHRPLT_FLAG)));
 
                 receiveListWHRPLT.add(treceivetaskWHRPLT);
             }
@@ -6938,34 +6938,34 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 treceivetaskdetail = new receivetaskdetail();
-                //notification.setPickTask(mCursor.getColumnIndex(PICKTASK_COUNT));
-                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndex(RTD_TASKNO)));
-                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndex(RTD_TRANLINENO)));
-                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndex(RTD_DOCTYPE)));
-                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCNO)));
-                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCLINENO)));
-                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndex(RTD_ITEM)));
-                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndex(RTD_LOCTID)));
-                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndex(RTD_WLOTNO)));
-                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndex(RTD_UMEASUR)));
-                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndex(RTD_WMSSTAT)));
-                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYREC)));
-                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TRKQTYREC)));
-                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndex(RTD_REVLEV)));
-                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYINC)));
-                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndex(RTD_ITMDESC)));
-                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndex(RTD_PCKDESC)));
-                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndex(RTD_COUNTRYID)));
-                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndex(RTD_ITEMSHOW)));
-                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndex(RTD_COLLECTION)));
-                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndex(RTD_WELEMENT)));
-                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndex(RTD_WIDGETID)));
-                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndex(RTD_CATCHWT)));
-                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(RTD_DECNUM)));
-                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndex(RTD_LOTREFID)));
-                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(RTD_LINESPLIT)));
-                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(RTD_FLAG)));
-                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndex(RTD_PALNO)));
+                //notification.setPickTask(mCursor.getColumnIndexOrThrow(PICKTASK_COUNT));
+                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TASKNO)));
+                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRANLINENO)));
+                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCTYPE)));
+                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCNO)));
+                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCLINENO)));
+                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEM)));
+                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOCTID)));
+                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WLOTNO)));
+                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_UMEASUR)));
+                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WMSSTAT)));
+                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYREC)));
+                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRKQTYREC)));
+                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_REVLEV)));
+                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYINC)));
+                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITMDESC)));
+                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PCKDESC)));
+                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COUNTRYID)));
+                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEMSHOW)));
+                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COLLECTION)));
+                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WELEMENT)));
+                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WIDGETID)));
+                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_CATCHWT)));
+                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DECNUM)));
+                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOTREFID)));
+                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LINESPLIT)));
+                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_FLAG)));
+                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PALNO)));
 
                 receiveListdetail.add(treceivetaskdetail);
             }
@@ -6988,7 +6988,7 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 tSlotList = new SlotList();
-                tSlotList.setSlot(mCursor.getString(mCursor.getColumnIndex(RSL_SLOT)));
+                tSlotList.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(RSL_SLOT)));
 
                 slotLists.add(tSlotList);
             }
@@ -7057,8 +7057,8 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 tMoveTaskSlotList = new MoveTaskSlotList();
 
-                tMoveTaskSlotList.setSlot(mCursor.getString(mCursor.getColumnIndex(MTSL_SLOT)));
-                tMoveTaskSlotList.setSlottype(mCursor.getString(mCursor.getColumnIndex(MTSL_SLOTTYPE)));
+                tMoveTaskSlotList.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(MTSL_SLOT)));
+                tMoveTaskSlotList.setSlottype(mCursor.getString(mCursor.getColumnIndexOrThrow(MTSL_SLOTTYPE)));
 
                 moveTaskSlotList.add(tMoveTaskSlotList);
             }
@@ -7082,35 +7082,35 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 treceivetaskdetail = new receivetaskdetail();
-                //notification.setPickTask(mCursor.getColumnIndex(PICKTASK_COUNT));
-                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndex(RTD_TASKNO)));
-                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndex(RTD_TRANLINENO)));
-                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndex(RTD_DOCTYPE)));
-                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCNO)));
-                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCLINENO)));
-                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndex(RTD_ITEM)));
-                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndex(RTD_LOCTID)));
-                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndex(RTD_WLOTNO)));
-                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndex(RTD_UMEASUR)));
-                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndex(RTD_WMSSTAT)));
-                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYREC)));
-                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TRKQTYREC)));
-                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndex(RTD_REVLEV)));
-                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYINC)));
-                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndex(RTD_ITMDESC)));
-                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndex(RTD_PCKDESC)));
-                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndex(RTD_COUNTRYID)));
-                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndex(RTD_ITEMSHOW)));
-                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndex(RTD_COLLECTION)));
-                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndex(RTD_WELEMENT)));
-                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndex(RTD_WIDGETID)));
-                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndex(RTD_CATCHWT)));
-                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(RTD_DECNUM)));
-                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndex(RTD_LOTREFID)));
-                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(RTD_LINESPLIT)));
-                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(RTD_FLAG)));
-                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndex(RTD_PALNO)));
-                treceivetaskdetail.setrowNo(mCursor.getString(mCursor.getColumnIndex(RTD_ROWNO)));
+                //notification.setPickTask(mCursor.getColumnIndexOrThrow(PICKTASK_COUNT));
+                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TASKNO)));
+                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRANLINENO)));
+                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCTYPE)));
+                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCNO)));
+                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCLINENO)));
+                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEM)));
+                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOCTID)));
+                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WLOTNO)));
+                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_UMEASUR)));
+                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WMSSTAT)));
+                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYREC)));
+                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRKQTYREC)));
+                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_REVLEV)));
+                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYINC)));
+                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITMDESC)));
+                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PCKDESC)));
+                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COUNTRYID)));
+                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEMSHOW)));
+                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COLLECTION)));
+                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WELEMENT)));
+                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WIDGETID)));
+                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_CATCHWT)));
+                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DECNUM)));
+                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOTREFID)));
+                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LINESPLIT)));
+                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_FLAG)));
+                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PALNO)));
+                treceivetaskdetail.setrowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ROWNO)));
 
                 receiveListdetail.add(treceivetaskdetail);
             }
@@ -7134,34 +7134,34 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 treceivetaskdetail = new receivetaskdetail();
 
-                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndex(RTD_TASKNO)));
-                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndex(RTD_TRANLINENO)));
-                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndex(RTD_DOCTYPE)));
-                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCNO)));
-                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndex(RTD_DOCLINENO)));
-                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndex(RTD_ITEM)));
-                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndex(RTD_LOCTID)));
-                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndex(RTD_WLOTNO)));
-                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndex(RTD_UMEASUR)));
-                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndex(RTD_WMSSTAT)));
-                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYREC)));
-                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndex(RTD_TRKQTYREC)));
-                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndex(RTD_REVLEV)));
-                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndex(RTD_TQTYINC)));
-                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndex(RTD_ITMDESC)));
-                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndex(RTD_PCKDESC)));
-                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndex(RTD_COUNTRYID)));
-                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndex(RTD_ITEMSHOW)));
-                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndex(RTD_COLLECTION)));
-                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndex(RTD_WELEMENT)));
-                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndex(RTD_WIDGETID)));
-                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndex(RTD_CATCHWT)));
-                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(RTD_DECNUM)));
-                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndex(RTD_LOTREFID)));
-                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(RTD_LINESPLIT)));
-                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(RTD_FLAG)));
-                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndex(RTD_PALNO)));
-                treceivetaskdetail.setrowNo(mCursor.getString(mCursor.getColumnIndex(RTD_ROWNO)));
+                treceivetaskdetail.settaskno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TASKNO)));
+                treceivetaskdetail.settranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRANLINENO)));
+                treceivetaskdetail.setdoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCTYPE)));
+                treceivetaskdetail.setdocno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCNO)));
+                treceivetaskdetail.setdoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DOCLINENO)));
+                treceivetaskdetail.setitem(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEM)));
+                treceivetaskdetail.setloctid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOCTID)));
+                treceivetaskdetail.setwlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WLOTNO)));
+                treceivetaskdetail.setumeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_UMEASUR)));
+                treceivetaskdetail.setwmsstat(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WMSSTAT)));
+                treceivetaskdetail.settqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYREC)));
+                treceivetaskdetail.settrkqtyrec(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TRKQTYREC)));
+                treceivetaskdetail.setrevlev(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_REVLEV)));
+                treceivetaskdetail.settqtyinc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_TQTYINC)));
+                treceivetaskdetail.setitmdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITMDESC)));
+                treceivetaskdetail.setpckdesc(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PCKDESC)));
+                treceivetaskdetail.setcountryid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COUNTRYID)));
+                treceivetaskdetail.setitemShow(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ITEMSHOW)));
+                treceivetaskdetail.setcollection(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_COLLECTION)));
+                treceivetaskdetail.setwelement(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WELEMENT)));
+                treceivetaskdetail.setwidgetID(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_WIDGETID)));
+                treceivetaskdetail.setcatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_CATCHWT)));
+                treceivetaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_DECNUM)));
+                treceivetaskdetail.setlotrefid(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LOTREFID)));
+                treceivetaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_LINESPLIT)));
+                treceivetaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_FLAG)));
+                treceivetaskdetail.setPalno(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_PALNO)));
+                treceivetaskdetail.setrowNo(mCursor.getString(mCursor.getColumnIndexOrThrow(RTD_ROWNO)));
 
                 receiveListdetail.add(treceivetaskdetail);
             }
@@ -7184,42 +7184,42 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskdetail();
-                //notification.setPickTask(mCursor.getColumnIndex(PICKTASK_COUNT));
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_SLOT)));
-                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TQTY)));
-                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTQTY)));
-                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKQTY)));
-                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRKQTY)));
-                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndex(DETAIL_UOM)));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ITEM)));
-                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndex(DETAIL_DESC)));
-                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_WLOTNO)));
-                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_LOTNO)));
-                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRANLINENO)));
-                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGTRANLINENO)));
-                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCTYPE)));
-                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCNO)));
-                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCLINENO)));
-                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORGDOCLINENO)));
-                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndex(DETAIL_DOCSTAT)));
-                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndex(DETAIL_WEIGHT)));
-                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndex(DETAIL_VOLUME)));
-                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndex(DETAIL_DECNUM)));
-                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndex(DETAIL_STKUMID)));
-                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndex(DETAIL_CATCHWT)));
-                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndex(DETAIL_UMFACT)));
-                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TSHIPPED)));
-                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndex(DETAIL_TRKSHIPPED)));
-                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndex(DETAIL_LBSHP)));
-                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndex(DETAIL_LINESPLIT)));
-                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndex(DETAIL_FLAG)));
-                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_ITEM)));
-                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndex(DETAIL_SUBSTITUTED_TRANNO)));
-                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_IS_SUBSTITUTED)));
-                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndex(DETAIL_ORG_SOITEM)));
-                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndex(DETAIL_STAGINGSLOT)));
-                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_OTQTYPICKED)));
-                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndex(DETAIL_PICKED)));
+                //notification.setPickTask(mCursor.getColumnIndexOrThrow(PICKTASK_COUNT));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SLOT)));
+                tpicktaskdetail.setTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TQTY)));
+                tpicktaskdetail.setorgTQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTQTY)));
+                tpicktaskdetail.setTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKQTY)));
+                tpicktaskdetail.setorgTrkQty(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRKQTY)));
+                tpicktaskdetail.setUom(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UOM)));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ITEM)));
+                tpicktaskdetail.setDescrip(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DESC)));
+                tpicktaskdetail.setWLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WLOTNO)));
+                tpicktaskdetail.setLotNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LOTNO)));
+                tpicktaskdetail.setTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRANLINENO)));
+                tpicktaskdetail.setorgTranlineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGTRANLINENO)));
+                tpicktaskdetail.setDoctype(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCTYPE)));
+                tpicktaskdetail.setDocno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCNO)));
+                tpicktaskdetail.setDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCLINENO)));
+                tpicktaskdetail.setorgDoclineno(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORGDOCLINENO)));
+                tpicktaskdetail.setDocstat(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DOCSTAT)));
+                tpicktaskdetail.setWeight(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_WEIGHT)));
+                tpicktaskdetail.setVolume(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_VOLUME)));
+                tpicktaskdetail.setdecnum(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_DECNUM)));
+                tpicktaskdetail.setStkumid(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STKUMID)));
+                tpicktaskdetail.setCatchwt(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_CATCHWT)));
+                tpicktaskdetail.setUmfact(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_UMFACT)));
+                tpicktaskdetail.setTshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TSHIPPED)));
+                tpicktaskdetail.setTrkshipped(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_TRKSHIPPED)));
+                tpicktaskdetail.setLbshp(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LBSHP)));
+                tpicktaskdetail.setLinesplit(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_LINESPLIT)));
+                tpicktaskdetail.setFlag(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_FLAG)));
+                tpicktaskdetail.setSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_ITEM)));
+                tpicktaskdetail.setSubTranNo(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_SUBSTITUTED_TRANNO)));
+                tpicktaskdetail.setIsSubItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_IS_SUBSTITUTED)));
+                tpicktaskdetail.setOrgSOItem(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_ORG_SOITEM)));
+                tpicktaskdetail.setStagingSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_STAGINGSLOT)));
+                tpicktaskdetail.setoTqtypicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_OTQTYPICKED)));
+                tpicktaskdetail.setPicked(mCursor.getString(mCursor.getColumnIndexOrThrow(DETAIL_PICKED)));
 
                 pickListdetail.add(tpicktaskdetail);
             }
@@ -7242,14 +7242,14 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 tpicktaskdetail = new picktaskWHMQTY();
-                //notification.setPickTask(mCursor.getColumnIndex(PICKTASK_COUNT));
-                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndex(WHMQTY_ITEM)));
-                tpicktaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndex(WHMQTY_LOCTID)));
-                tpicktaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndex(WHMQTY_WLOTNO)));
-                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndex(WHMQTY_SLOT)));
-                tpicktaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndex(WHMQTY_UMEASUR)));
-                tpicktaskdetail.setTqty(mCursor.getString(mCursor.getColumnIndex(WHMQTY_TQTY)));
-                tpicktaskdetail.setSlottype(mCursor.getString(mCursor.getColumnIndex(WHMQTY_SLOTTYPE)));
+                //notification.setPickTask(mCursor.getColumnIndexOrThrow(PICKTASK_COUNT));
+                tpicktaskdetail.setItem(mCursor.getString(mCursor.getColumnIndexOrThrow(WHMQTY_ITEM)));
+                tpicktaskdetail.setLoctid(mCursor.getString(mCursor.getColumnIndexOrThrow(WHMQTY_LOCTID)));
+                tpicktaskdetail.setWlotno(mCursor.getString(mCursor.getColumnIndexOrThrow(WHMQTY_WLOTNO)));
+                tpicktaskdetail.setSlot(mCursor.getString(mCursor.getColumnIndexOrThrow(WHMQTY_SLOT)));
+                tpicktaskdetail.setUmeasur(mCursor.getString(mCursor.getColumnIndexOrThrow(WHMQTY_UMEASUR)));
+                tpicktaskdetail.setTqty(mCursor.getString(mCursor.getColumnIndexOrThrow(WHMQTY_TQTY)));
+                tpicktaskdetail.setSlottype(mCursor.getString(mCursor.getColumnIndexOrThrow(WHMQTY_SLOTTYPE)));
 
                 pickListdetail.add(tpicktaskdetail);
             }
@@ -7306,7 +7306,7 @@ public class WMSDbHelper{
 
         int count = 0;
 
-       // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where (Flag = 'N' OR Flag = 'H') OR (chgQty = 'Y' and LotNo = '') and taskNum = '" + Globals.gTaskNo + "' and NOT Docstat='V'", null);
+        // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where (Flag = 'N' OR Flag = 'H') OR (chgQty = 'Y' and LotNo = '') and taskNum = '" + Globals.gTaskNo + "' and NOT Docstat='V'", null);
         mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where (Flag = 'N' OR Flag = 'H') and taskNum = '" + Globals.gTaskNo + "' and NOT Docstat='V'", null);
         count = mCursor.getCount();
         mCursor.close();
@@ -7704,11 +7704,11 @@ public class WMSDbHelper{
     public String getPhysicalCoutDetailCount() {
 
         String slotassign = "";
-             if (!Globals.FROMHIDE){
-                 mCursor = mSqlitedb.rawQuery("select COUNT(*) from physicalcountDetail where slot = '"+ Globals.gPCSlot +"'and userid = '"+ Globals.gUsercode +"'", null);
-             }else {
-                 mCursor = mSqlitedb.rawQuery("select COUNT(*) from physicalcountDetail where slot = '"+ Globals.gPCSlot +"'and Flag='Y' and userid = '"+ Globals.gUsercode +"'", null);
-             }
+        if (!Globals.FROMHIDE){
+            mCursor = mSqlitedb.rawQuery("select COUNT(*) from physicalcountDetail where slot = '"+ Globals.gPCSlot +"'and userid = '"+ Globals.gUsercode +"'", null);
+        }else {
+            mCursor = mSqlitedb.rawQuery("select COUNT(*) from physicalcountDetail where slot = '"+ Globals.gPCSlot +"'and Flag='Y' and userid = '"+ Globals.gUsercode +"'", null);
+        }
 
         try {
             while (mCursor.moveToNext()) {
@@ -8054,7 +8054,7 @@ public class WMSDbHelper{
 
         String mTotpalcnt = "";
 
-       mCursor = mSqlitedb.rawQuery("select count(*) as palcount from receivetaskWHRPLT where taskno = '" + Globals.gRTTaskNo + "' ", null);
+        mCursor = mSqlitedb.rawQuery("select count(*) as palcount from receivetaskWHRPLT where taskno = '" + Globals.gRTTaskNo + "' ", null);
        /* mCursor = mSqlitedb.rawQuery("select count(*) as palcount from receivetaskWHRPLT where taskno = '" + Globals.gRTTaskNo + "' and " +
                 "tranlineno='" + Globals.gRTTranline + "' ", null);*/
 
@@ -8176,10 +8176,10 @@ public class WMSDbHelper{
             if (Globals.gCatchwt == "T"){
                 cv.put(WMSDbHelper.DETAIL_TQTY,
                         tpicktaskdetail.getorgTQty());
-                       // String.valueOf(dQty));
+                // String.valueOf(dQty));
                 cv.put(WMSDbHelper.DETAIL_ORGTQTY,
                         tpicktaskdetail.getorgTQty());
-                       // String.valueOf(dQty));
+                // String.valueOf(dQty));
                 cv.put(WMSDbHelper.DETAIL_TRKQTY,
                         tpicktaskdetail.getTrkQty());
             }else{
@@ -8189,7 +8189,7 @@ public class WMSDbHelper{
                         tpicktaskdetail.getorgTQty());
                 cv.put(WMSDbHelper.DETAIL_TRKQTY,
                         tpicktaskdetail.getTrkQty());
-                       // String.valueOf(dQty));
+                // String.valueOf(dQty));
             }
            /* cv.put(WMSDbHelper.DETAIL_ORGTQTY,
                     tpicktaskdetail.getorgTQty());*/
@@ -8286,7 +8286,7 @@ public class WMSDbHelper{
                 if (dQty < Double.parseDouble(tpicktaskdetail.getorgTQty())){
                     cv.put(WMSDbHelper.DETAIL_ORGTQTY, String.valueOf(dQty));
                 }
-               // cv.put(WMSDbHelper.DETAIL_ORGTQTY, String.valueOf(dQty));
+                // cv.put(WMSDbHelper.DETAIL_ORGTQTY, String.valueOf(dQty));
 
                 cv.put(WMSDbHelper.DETAIL_TRKQTY,
                         tpicktaskdetail.getTrkQty());
@@ -8348,7 +8348,7 @@ public class WMSDbHelper{
             cv.put(WMSDbHelper.DETAIL_PICKDURATION,
                     tpicktaskdetail.getpickDuration());
             cv.put(WMSDbHelper.DETAIL_LINESPLIT,tpicktaskdetail.getLinesplit());
-           // cv.put(WMSDbHelper.DETAIL_LINESPLIT, Globals.gLineSplit);
+            // cv.put(WMSDbHelper.DETAIL_LINESPLIT, Globals.gLineSplit);
             cv.put(WMSDbHelper.DETAIL_FLAG, "Y");
             //cv.put(WMSDbHelper.DETAIL_FLAG, tpicktaskdetail.getFlag());
             cv.put(WMSDbHelper.DETAIL_STAGINGSLOT,
@@ -8371,7 +8371,7 @@ public class WMSDbHelper{
             mCursor = mSqlitedb.rawQuery("select * from picktaskrevertolddata where taskNum = '" +  Globals.gTaskNo + "' " +
                     "and  Item = '" + itemNum + "' and  LotNo = '" + tpicktaskdetail.getLotNo() + "'", null);
 
-          count=mCursor.getCount();
+            count=mCursor.getCount();
             if (count != 0) {
                 isAvail = true;
             }
@@ -8383,7 +8383,7 @@ public class WMSDbHelper{
                 cv.put(WMSDbHelper.DETAIL_TEMPQTY, "");
                 mSqlitedb.insert(PICK_TASK_REVEROLDDATA, null, cv);
             }
-           //
+            //
 
             Log.i("PickTask Detail", "PickTask Detail record updated successfully...");
         } catch (Exception e) {
@@ -8681,11 +8681,11 @@ public class WMSDbHelper{
 
             ContentValues cv = new ContentValues();
 
-                cv.put(RTD_TQTYREC, String.valueOf(qty));
-                cv.put(RTD_COLLECTION,DefSlot );
-                //cv.put(RTD_TRKQTYREC,oldQty);
-               //cv.put(RTD_TQTYINC,String.valueOf(qty));
-                //cv.put(RTD_TQTYINC, qty);
+            cv.put(RTD_TQTYREC, String.valueOf(qty));
+            cv.put(RTD_COLLECTION,DefSlot );
+            //cv.put(RTD_TRKQTYREC,oldQty);
+            //cv.put(RTD_TQTYINC,String.valueOf(qty));
+            //cv.put(RTD_TQTYINC, qty);
 
             mSqlitedb.update(WMSDbHelper.RECEIVE_TASK_DETAIL, cv, "Taskno = '"
                     + taskno + "' and tranlineno='" + Tranlineno + "'", null);
@@ -8850,12 +8850,12 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 notification = new notificationcount();
-                //tpicktasklist.setStatus(mCursor.getString(mCursor.getColumnIndex(STATUS)));
-                notification.setPickTask(mCursor.getInt(mCursor.getColumnIndex(PICKTASK_COUNT)));
-                notification.setReceiveTask(mCursor.getInt(mCursor.getColumnIndex(RECEIVETASK_COUNT)));
-                notification.setPhysicalCount(mCursor.getInt(mCursor.getColumnIndex(PHYSICALCOUNT_COUNT)));
-                notification.setMoveTask(mCursor.getInt(mCursor.getColumnIndex(MOVETASK_COUNT)));
-                notification.setLoadPickPallets(mCursor.getInt(mCursor.getColumnIndex(LOADPALLETS_COUNT)));
+                //tpicktasklist.setStatus(mCursor.getString(mCursor.getColumnIndexOrThrow(STATUS)));
+                notification.setPickTask(mCursor.getInt(mCursor.getColumnIndexOrThrow(PICKTASK_COUNT)));
+                notification.setReceiveTask(mCursor.getInt(mCursor.getColumnIndexOrThrow(RECEIVETASK_COUNT)));
+                notification.setPhysicalCount(mCursor.getInt(mCursor.getColumnIndexOrThrow(PHYSICALCOUNT_COUNT)));
+                notification.setMoveTask(mCursor.getInt(mCursor.getColumnIndexOrThrow(MOVETASK_COUNT)));
+                notification.setLoadPickPallets(mCursor.getInt(mCursor.getColumnIndexOrThrow(LOADPALLETS_COUNT)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -8877,13 +8877,13 @@ public class WMSDbHelper{
             while (mCursor.moveToNext()) {
                 menulist = new menulist();
 
-                menulist.setPickTask(mCursor.getInt(mCursor.getColumnIndex(PICKTASK_MENU)));
-                menulist.setReceiveTask(mCursor.getInt(mCursor.getColumnIndex(RECEIVETASK_MENU)));
-                menulist.setPhysicalCount(mCursor.getInt(mCursor.getColumnIndex(PHYSICALCOUNT_MENU)));
-                menulist.setMoveTask(mCursor.getInt(mCursor.getColumnIndex(MOVETASK_MENU)));
-                menulist.setLoadPickPallets(mCursor.getInt(mCursor.getColumnIndex(LOADPALLETS_MENU)));
-                menulist.setMoveManually(mCursor.getInt(mCursor.getColumnIndex(MOVEMANUALLY_MENU)));
-                menulist.setBreakerUomUtility(mCursor.getInt(mCursor.getColumnIndex(BREAKERUOMUTILITY_MENU)));
+                menulist.setPickTask(mCursor.getInt(mCursor.getColumnIndexOrThrow(PICKTASK_MENU)));
+                menulist.setReceiveTask(mCursor.getInt(mCursor.getColumnIndexOrThrow(RECEIVETASK_MENU)));
+                menulist.setPhysicalCount(mCursor.getInt(mCursor.getColumnIndexOrThrow(PHYSICALCOUNT_MENU)));
+                menulist.setMoveTask(mCursor.getInt(mCursor.getColumnIndexOrThrow(MOVETASK_MENU)));
+                menulist.setLoadPickPallets(mCursor.getInt(mCursor.getColumnIndexOrThrow(LOADPALLETS_MENU)));
+                menulist.setMoveManually(mCursor.getInt(mCursor.getColumnIndexOrThrow(MOVEMANUALLY_MENU)));
+                menulist.setBreakerUomUtility(mCursor.getInt(mCursor.getColumnIndexOrThrow(BREAKERUOMUTILITY_MENU)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -9018,8 +9018,8 @@ public class WMSDbHelper{
         try {
             while (mCursor.moveToNext()) {
                 comp = new company();
-                comp.setCompanyID(mCursor.getString(mCursor.getColumnIndex(COMPANY_ID)));
-                comp.setCompanyName(mCursor.getString(mCursor.getColumnIndex(COMPANY_NAME)));
+                comp.setCompanyID(mCursor.getString(mCursor.getColumnIndexOrThrow(COMPANY_ID)));
+                comp.setCompanyName(mCursor.getString(mCursor.getColumnIndexOrThrow(COMPANY_NAME)));
                 lstCompany.add(comp);
             }
         }catch (Exception e) {
@@ -9102,7 +9102,7 @@ public class WMSDbHelper{
         mCursor = mSqlitedb.rawQuery(query,null);
         try {
             while (mCursor.moveToNext()) {
-                CompDb=mCursor.getString(mCursor.getColumnIndex(COMPANY_DATABASE));
+                CompDb=mCursor.getString(mCursor.getColumnIndexOrThrow(COMPANY_DATABASE));
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -9246,7 +9246,7 @@ public class WMSDbHelper{
 
         try {
             while (mCursor.moveToNext()) {
-                    Tqty = mCursor.getString(0);
+                Tqty = mCursor.getString(0);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -9410,7 +9410,7 @@ public class WMSDbHelper{
         boolean isAvail = false;
         int count = 0;
 
-       // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where wLotNo ='" + wlotno + "' and taskNum='" + Globals.gTaskNo +  "' and Docstat <> 'X' and Docstat <> 'V' ", null);
+        // mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where wLotNo ='" + wlotno + "' and taskNum='" + Globals.gTaskNo +  "' and Docstat <> 'X' and Docstat <> 'V' ", null);
         mCursor = mSqlitedb.rawQuery("select * from picktaskdetail where wLotNo ='" + wlotno + "' and taskNum='" + Globals.gTaskNo +  "' ", null);
         count = mCursor.getCount();
         mCursor.close();
@@ -9481,8 +9481,8 @@ public class WMSDbHelper{
         int count = 0;
 
         mCursor = mSqlitedb.rawQuery("select * from physicalcountDetail where wlotno='" + wlotno + "' " +
-                    "and slot='" + Globals.gPCSlot + "' and umeasur = '" + umeasur + "' " +
-                    "and userid = '" + Globals.gUsercode + "'", null);
+                "and slot='" + Globals.gPCSlot + "' and umeasur = '" + umeasur + "' " +
+                "and userid = '" + Globals.gUsercode + "'", null);
         count = mCursor.getCount();
         mCursor.close();
         if (count == 0) {
@@ -9719,7 +9719,7 @@ public class WMSDbHelper{
         String Tqty="";
 
         mCursor = mSqlitedb.rawQuery("select tcountqty, tqty from physicalcountDetail where wlotno = '" + Globals.gPCWlotno + "' " +
-                                            "and  umeasur = '" + umeasur + "' and  slot = '" + Globals.gPCSlot + "'", null);
+                "and  umeasur = '" + umeasur + "' and  slot = '" + Globals.gPCSlot + "'", null);
         try {
             while (mCursor.moveToNext()) {
                 if (flag.equals("Y")){
@@ -10346,7 +10346,7 @@ public class WMSDbHelper{
 
             mSqlitedb.update(WMSDbHelper.PICK_TASK_REVEROLDDATA, cv,  " taskNum = '" + Globals.gTaskNo + "' and LotNo='" + lotNo + "' ", null);
 
-           // mSqlitedb.update(WMSDbHelper.PICK_TASK_REVEROLDDATA, cv,  " taskNum = '" + Globals.gTaskNo + "' and Tranlineno='" + Tranlineno + "' ", null);
+            // mSqlitedb.update(WMSDbHelper.PICK_TASK_REVEROLDDATA, cv,  " taskNum = '" + Globals.gTaskNo + "' and Tranlineno='" + Tranlineno + "' ", null);
 
             Log.i("Pick Task Detail", "Pick Task Detail record updated successfully...");
 
@@ -10391,7 +10391,7 @@ public class WMSDbHelper{
             ContentValues cv = new ContentValues();
 
             cv.put(DETAIL_TQTY, mPicktaskDetail.getTQty());
-           cv.put(DETAIL_ORGTQTY, mPicktaskDetail.getorgTQty());
+            cv.put(DETAIL_ORGTQTY, mPicktaskDetail.getorgTQty());
             //cv.put(RTD_TRKQTYREC, qty);
             cv.put(DETAIL_FLAG,mPicktaskDetail.getFlag());
             cv.put(DETAIL_SLOT,mPicktaskDetail.getSlot() );
@@ -10537,9 +10537,9 @@ public class WMSDbHelper{
 
             ContentValues cv = new ContentValues();
 
-                cv.put(RTD_TQTYREC, qty);
-                //cv.put(RTD_TRKQTYREC, qty);
-                cv.put(RTD_TQTYINC,qty);
+            cv.put(RTD_TQTYREC, qty);
+            //cv.put(RTD_TRKQTYREC, qty);
+            cv.put(RTD_TQTYINC,qty);
 
             mSqlitedb.update(WMSDbHelper.RECEIVE_TASK_DETAIL, cv, "Taskno = '"
                     + taskno + "' and " + "tranlineno='" + Tranlineno + "'", null);
@@ -10563,8 +10563,8 @@ public class WMSDbHelper{
 
             ContentValues cv = new ContentValues();
 
-                cv.put(WMSDbHelper.RTWHRPLT_TQTY,
-                        qty);
+            cv.put(WMSDbHelper.RTWHRPLT_TQTY,
+                    qty);
 
             mSqlitedb.update(WMSDbHelper.RECEIVE_TASK_WHRPLT, cv, "Taskno = '"
                     + taskno + "' and " + "tasklineno='" + tranlineno + "'", null);
@@ -10617,7 +10617,7 @@ public class WMSDbHelper{
                 "and  tranlineno = '" + tranNum + "'", null);
         try {
             while (mCursor.moveToNext()) {
-                    Tqty = mCursor.getString(0);
+                Tqty = mCursor.getString(0);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -10921,9 +10921,9 @@ public class WMSDbHelper{
 
         try{
 
-        mCursor = mSqlitedb.rawQuery("select *  from physicalcountDetail where FLag = 'Y' and userid = '"+ Globals.gUsercode +"'", null);
-        Count = mCursor.getCount();
-        mCursor.close();
+            mCursor = mSqlitedb.rawQuery("select *  from physicalcountDetail where FLag = 'Y' and userid = '"+ Globals.gUsercode +"'", null);
+            Count = mCursor.getCount();
+            mCursor.close();
 
         } catch (Exception e) {
             e.printStackTrace();
